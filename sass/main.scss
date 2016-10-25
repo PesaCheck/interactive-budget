@@ -2,3 +2,19 @@
   width: 140px;
   height: auto;
 }
+
+.navbar-default {
+  .navbar-toggle{
+    background: #2a74aa;
+    border: none;
+    border-radius: 0px;
+
+    .icon-bar{
+      background-color: #fff;
+    }
+  }
+}
+
+.page{
+  margin-top: 64px;
+}

@@ -1,0 +1,9 @@
+<div uib-carousel active="active" interval="PCSC.interval" no-wrap="noWrapSlides" class="pesacheck-slider">
+  <div uib-slide ng-repeat="slide in PCSC.content track by $index" index="$index">
+    <img ng-src="{{slide.image}}" style="margin:auto;">
+    <div class="carousel-caption">
+      <!-- <h4>Slide {{slide.id}}</h4>
+      <p>{{slide.text}}</p> -->
+    </div>
+  </div>
+</div>

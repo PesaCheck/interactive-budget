@@ -1,0 +1,90 @@
+.pesacheck-slider {
+  height: 86vh;
+  max-height: 86vh;
+  overflow-y: hidden; }
+  .pesacheck-slider img {
+    width: 100%;
+    height: 86vh; }
+  .pesacheck-slider .carousel-control {
+    top: 48%;
+    bottom: 51%;
+    width: 64px;
+    height: 64px;
+    background-color: #020815;
+    border-radius: 50%;
+    border: 5px solid #ec302e; }
+  .pesacheck-slider .carousel-control.left,
+  .pesacheck-slider .carousel-control.right {
+    background-image: none; }
+  .pesacheck-slider .carousel-control.left {
+    margin-left: 32px; }
+  .pesacheck-slider .carousel-control.right {
+    margin-right: 32px; }
+  .pesacheck-slider .carousel-control .glyphicon-chevron-left,
+  .pesacheck-slider .carousel-control .glyphicon-chevron-right,
+  .pesacheck-slider .carousel-control .icon-next,
+  .pesacheck-slider .carousel-control .icon-prev {
+    width: auto;
+    height: auto;
+    margin-top: -10px;
+    font-size: 18px; }
+  .pesacheck-slider .slider-caption {
+    position: absolute;
+    text-align: center;
+    top: 100px;
+    width: 100%;
+    padding: 0 128px; }
+    .pesacheck-slider .slider-caption .header {
+      text-transform: uppercase;
+      font-size: 48px;
+      font-weight: bold;
+      display: block;
+      color: #fff;
+      margin-bottom: 48px; }
+    .pesacheck-slider .slider-caption .description {
+      font-size: 20px;
+      display: block;
+      margin-top: 16px;
+      color: #fff; }
+    .pesacheck-slider .slider-caption .btn {
+      margin-right: 16px;
+      font-weight: bold;
+      font-size: 16px;
+      text-transform: uppercase;
+      padding: 16px 32px;
+      display: inline-block;
+      border: 2px solid #36abfc;
+      border-radius: 0px; }
+  .pesacheck-slider .slider-primary-btn {
+    margin-top: 64px;
+    background: #36abfc;
+    color: #fff; }
+  .pesacheck-slider .slider-secondary-btn {
+    margin-top: 64px;
+    background: none;
+    color: #36abfc; }
+  .pesacheck-slider .carousel-indicators .active {
+    background: #ec302e; }
+  .pesacheck-slider .carousel-indicators li {
+    border-color: #ec302e;
+    margin-right: 16px; }
+
+.logo {
+  width: 140px;
+  height: auto; }
+
+.navbar-default .navbar-toggle {
+  background: #2a74aa;
+  border: none;
+  border-radius: 0px; }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff; }
+
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background: #2a74aa;
+  color: #fff; }
+
+.page {
+  margin-top: 50px; }

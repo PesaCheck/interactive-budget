@@ -17,7 +17,9 @@ var deps = {
   js: [
     PATHS.node + "angular/angular.js",
     PATHS.node + "chart.js/dist/Chart.js",
-    PATHS.node + "angular-ui-router/release/angular-ui-router.js"
+    PATHS.node + "angular-ui-router/release/angular-ui-router.js",
+    PATHS.node + "angular-ui-bootstrap/dist/ui-bootstrap.js",
+    PATHS.node + "angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"
   ],
   css: [
     PATHS.node + "bootstrap/dist/css/bootstrap.css",
@@ -110,7 +112,8 @@ gulp.task('build', [
   'main',
   'templates',
   'js-modules',
-  'css-modules'
+  'css-modules',
+  'images'
 ])
 
 // run development

@@ -1,5 +1,6 @@
 var pesacheck = angular.module("PesaCheck", [
-  'ui.router'
+  'ui.router',
+  'ui.bootstrap'
 ]);
 
 pesacheck.config(function($stateProvider, $locationProvider){

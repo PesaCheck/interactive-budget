@@ -16,7 +16,8 @@ var PATHS = {
 var deps = {
   js: [
     PATHS.node + "angular/angular.js",
-    PATHS.node + "chart.js/dist/Chart.js"
+    PATHS.node + "chart.js/dist/Chart.js",
+    PATHS.node + "angular-ui-router/angular-ui-router.js"
   ],
   css: [
     PATHS.node + "bootstrap/dist/css/bootstrap.css",
@@ -81,7 +82,7 @@ gulp.task("css-modules", function(){
 
 // serve a build
 gulp.task('webserver', function(){
-  gulp.src('dist')
+  gulp.src('public')
    .pipe(webserver({
      livereload: true,
      open: true,
@@ -92,7 +93,7 @@ gulp.task('webserver', function(){
 
 // watch for file changes
 gulp.task('watch', function(){
-  return gulp.watch(['./**/**.**', '!./dist/**'], ['build'])
+  return gulp.watch(['./**/**.**', '!./public/**'], ['build'])
 });
 
 // build website

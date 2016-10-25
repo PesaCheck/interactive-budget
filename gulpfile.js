@@ -26,7 +26,7 @@ var deps = {
     PATHS.node + "bootstrap/dist/css/bootstrap.css.map"
   ],
   fonts: [
-    PATHS.node + "boostrap/dist/fonts/**/**"
+    PATHS.node + "boostrap/dist/fonts/**"
   ]
 }
 
@@ -47,7 +47,7 @@ gulp.task("css-dependencies", function(){
 
 gulp.task("fonts", function(){
   gulp.src(deps.fonts)
-    .pipe(gulp.dest('./public/fonts'))
+    .pipe(gulp.dest('./public/fonts/'))
 })
 
 // main app files

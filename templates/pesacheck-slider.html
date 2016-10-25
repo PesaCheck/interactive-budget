@@ -1,15 +1,9 @@
-<uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" class="pesacheck-slider">
-  <uib-slide ng-repeat="slide in PCSC.content track by $index" index="$index">
-    <div class="row slider-content">
-      <img ng-src="{{slide.image}}">
-      <div class="slider-caption">
-        <span class="header">{{slide.header}}</span>
-        <span class="description">{{slide.text}}</span>
-        <div class="btn-group">
-          <button class="btn slider-primary-btn">{{slide.primaryBtn.label}}</button>
-          <button class="btn slider-secondary-btn">{{slide.secondaryBtn.label}}</button>
-        </div>
-      </div>
+<div uib-carousel active="active" interval="PCSC.interval" no-wrap="noWrapSlides" class="pesacheck-slider">
+  <div uib-slide ng-repeat="slide in PCSC.content track by $index" index="$index">
+    <img ng-src="{{slide.image}}" style="margin:auto;">
+    <div class="carousel-caption">
+      <!-- <h4>Slide {{slide.id}}</h4>
+      <p>{{slide.text}}</p> -->
     </div>
-  </uib-slide>
-</uib-carousel>
+  </div>
+</div>

@@ -12,7 +12,16 @@ pesacheck.directive("pesacheckSlider", [
 
 pesacheck.factory("$PesaCheckSlider", function(){
   var Slider = {
-    content: [],
+    content: [
+      {
+        image: "./images/articles/orphans-and-disabled.jpeg",
+        text: ""
+      },
+      {
+        image: "./images/articles/water-for-schools.jpeg",
+        text: ""
+      }
+    ],
     setContent: function(content){
       Slider.content = content;
     }
@@ -27,8 +36,11 @@ pesacheck.controller("PesaCheckSliderCtrl",[
     var self = this;
 
     angular.extend(self, {
-      content: $PesaCheckSlider.content
+      content: $PesaCheckSlider.content,
+      interval: 5000
     })
+
+    console.log("pesacheck slider ")
 
     $scope.$watch(
       function(){

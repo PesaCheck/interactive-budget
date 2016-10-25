@@ -17,7 +17,7 @@ var deps = {
   js: [
     PATHS.node + "angular/angular.js",
     PATHS.node + "chart.js/dist/Chart.js",
-    PATHS.node + "angular-ui-router/angular-ui-router.js"
+    PATHS.node + "angular-ui-router/release/angular-ui-router.js"
   ],
   css: [
     PATHS.node + "bootstrap/dist/css/bootstrap.css",
@@ -57,6 +57,12 @@ gulp.task("main", function(){
    ])
    .pipe(gulp.dest("./public/"));
 });
+
+// copy images
+gulp.task("images", function(){
+  gulp.src('images/**/**.**')
+    .pipe(gulp.dest('./public/images'));
+})
 
 // build html template files
 gulp.task("templates", function(){

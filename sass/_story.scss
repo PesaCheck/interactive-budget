@@ -20,6 +20,7 @@
   .box{
     @include border-sizing(border-box);
     border: 1px solid $primarycol;
+    height: 350px;
     min-height: 350px;
     padding: 32px;
     padding-bottom: 0px;

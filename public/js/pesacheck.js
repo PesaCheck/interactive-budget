@@ -8,14 +8,16 @@ pesacheck.directive("pesacheckCharts", [
       controller: "pesacheckChartsCtrl",
       link: function(scope, element, attrs, controller, transcludeFn){
         console.log(attrs.type)
-        if(attrs.type == undefined){
+        scope.height = attrs.height;
+        scope.width = attrs.width;
 
+        if(attrs.type == undefined){
+          return;
         } else if(attrs.type == 'bubbleChart'){
           var myBubbleChart = new Chart(element, controller.bubbleChartCfg);
         } else if(attrs.type == 'barChart'){
           var myBubbleChart = new Chart(element, controller.barChartCfg);
         }
-        console.log(controller)
       }
     }
   }

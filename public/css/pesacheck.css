@@ -85,6 +85,7 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     border: 1px solid #2a74aa;
+    height: 350px;
     min-height: 350px;
     padding: 32px;
     padding-bottom: 0px;

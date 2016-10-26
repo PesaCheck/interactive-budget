@@ -1,0 +1,50 @@
+@import 'variables';
+@import "mixins";
+
+.story{
+  padding: 32px;
+
+  .row{
+    margin-bottom: 32px;
+  }
+
+  .main{
+    height: 350px;
+    min-height: 350px;
+    background: $primarycol;
+    padding: 32px;
+    padding-bottom: 0px;
+    color: $whitecol;
+  }
+
+  .box{
+    @include border-sizing(border-box);
+    border: 1px solid $primarycol;
+    height: 350px;
+    min-height: 350px;
+    padding: 32px;
+    padding-bottom: 0px;
+    background: $whitecol;
+
+    h3{
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-align: center;
+    }
+
+    p{
+      font-size: 13px;
+      text-transform: lowercase;
+      text-align: center;
+    }
+  }
+
+  .counter{
+    font-size: 48px;
+    text-align: center;
+    font-weight: bold;
+    display: block;
+    margin: 16px 0;
+  }
+}

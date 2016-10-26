@@ -1,4 +1,7 @@
 @import 'home';
+@import 'story';
+@import 'variables';
+
 
 .logo{
   width: 140px;
@@ -7,12 +10,12 @@
 
 .navbar-default {
   .navbar-toggle{
-    background: #2a74aa;
+    background: $primarycol;
     border: none;
     border-radius: 0px;
 
     .icon-bar{
-      background-color: #fff;
+      background-color: $whitecol;
     }
   }
 

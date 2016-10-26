@@ -95,8 +95,13 @@
       text-transform: uppercase;
       font-weight: bold;
       text-align: center; }
+    .story .box h4 {
+      font-size: 14px;
+      font-weight: 300;
+      text-transform: lowercase;
+      text-align: center; }
     .story .box p {
-      font-size: 13px;
+      font-size: 14px;
       text-transform: lowercase;
       text-align: center; }
   .story .truthmeter {

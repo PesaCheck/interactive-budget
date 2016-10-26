@@ -19,7 +19,8 @@ var deps = {
     PATHS.node + "chart.js/dist/Chart.js",
     PATHS.node + "angular-ui-router/release/angular-ui-router.js",
     PATHS.node + "angular-ui-bootstrap/dist/ui-bootstrap.js",
-    PATHS.node + "angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"
+    PATHS.node + "angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",
+    PATHS.node + "jquery/dist/jquery.js"
   ],
   css: [
     PATHS.node + "bootstrap/dist/css/bootstrap.css",

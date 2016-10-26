@@ -99,6 +99,12 @@
       font-size: 13px;
       text-transform: lowercase;
       text-align: center; }
+  .story .truthmeter {
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+    height: auto;
+    position: relative; }
   .story .counter {
     font-size: 48px;
     text-align: center;

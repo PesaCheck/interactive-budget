@@ -14,6 +14,11 @@ pesacheck.config(function($stateProvider, $locationProvider){
       url: "/story"
     })
 
+    .state("embedded", {
+      templateUrl: "tpls/embedded.html",
+      url: "/embedded"
+    })
+
   // use the HTML5 History API
   $locationProvider.html5Mode(true);
 });

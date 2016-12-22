@@ -208,3 +208,15 @@ pesacheck.controller("PesaCheckSliderCtrl",[
     )
   }
 ])
+
+pesacheck.directive("pesacheckTimeline", [
+  function(){
+    return {
+      restrict: "E",
+      replace: false,
+      link: function(scope, element, attrs, controller, transcludeFn){
+        
+      }
+    }
+  }
+]);

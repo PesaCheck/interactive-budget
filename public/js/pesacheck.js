@@ -326,8 +326,6 @@ pesacheck.directive("pesacheckTimeline", [
           count++;
         }
 
-        changeContext();
-
         function changeSlide () {
           $timeout(function () {
              changeContext()
@@ -338,7 +336,26 @@ pesacheck.directive("pesacheckTimeline", [
           }, slides[count].timeout * 1000);
         }
 
+        changeContext();
         changeSlide();
     }
   }
 }]);
+
+pesacheck.directive("bgImage", [
+  function(){
+    return {
+      restrict: "A",
+      replace: false,
+      link: function(scope, element, attrs, controller, transcludeFn){
+
+        var url = attrs.bgImage;
+        console.log(url)
+        element.css({
+            'background-image': 'url(' + url +')',
+            'background-size' : 'cover'
+        });
+      }
+    }
+  }
+]);

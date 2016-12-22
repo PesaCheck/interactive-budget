@@ -24,7 +24,8 @@ var deps = {
   ],
   css: [
     PATHS.node + "bootstrap/dist/css/bootstrap.css",
-    PATHS.node + "bootstrap/dist/css/bootstrap.css.map"
+    PATHS.node + "bootstrap/dist/css/bootstrap.css.map",
+    PATHS.node + "animate.css/animate.css"
   ],
   fonts: [
     PATHS.node + "boostrap/dist/fonts/**"

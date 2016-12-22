@@ -50,7 +50,15 @@
   }
 
 
+  .numbers{
+    padding: 32px;
 
+    .title{
+      text-transform: uppercase;
+      font-size: 32px;
+      color: $primarycol;
+    }
+  }
   .image-headline{
     display: block;
     position: relative;
@@ -62,11 +70,11 @@
     p{
       display: inline-block;
       margin: 0px 24px;
-      background: #000;
-      font-size: 24px;
+      background: $primarycol;
+      font-size: 32px;
       text-transform: uppercase;
       color: #fff;
-      padding: 8px 16px;
+      padding: 16px;
       top: -300px;
       position: relative;
     }
@@ -82,8 +90,7 @@
     p{
       display: inline-block;
       margin: 64px;
-      background: #000;
-      font-size: 24px;
+      font-size: 32px;
       text-transform: uppercase;
       color: #fff;
       padding: 8px 16px;
@@ -120,6 +127,30 @@
       text-transform: uppercase;
       color: #fff;
       opacity: 0.4;
+    }
+  }
+
+  li.false{
+    .indicator{
+      background: $redcol;
+    }
+  }
+
+  li.partly-true{
+    .indicator{
+      background: $orangecol;
+    }
+  }
+
+  li.plausible{
+    .indicator{
+      background: $yellowcol;
+    }
+  }
+
+  li.true{
+    .indicator{
+      background: $greencol;
     }
   }
 

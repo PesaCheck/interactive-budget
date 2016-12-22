@@ -154,17 +154,23 @@
     display: flex;
     flex-direction: column;
     flex: 1; }
+  .timeline .numbers {
+    padding: 32px; }
+    .timeline .numbers .title {
+      text-transform: uppercase;
+      font-size: 32px;
+      color: #2a74aa; }
   .timeline .image-headline {
     display: block;
     position: relative; }
     .timeline .image-headline p {
       display: inline-block;
       margin: 0px 24px;
-      background: #000;
-      font-size: 24px;
+      background: #2a74aa;
+      font-size: 32px;
       text-transform: uppercase;
       color: #fff;
-      padding: 8px 16px;
+      padding: 16px;
       top: -300px;
       position: relative; }
   .timeline .slide.dancing-meter {
@@ -176,8 +182,7 @@
     .timeline .slide.dancing-meter p {
       display: inline-block;
       margin: 64px;
-      background: #000;
-      font-size: 24px;
+      font-size: 32px;
       text-transform: uppercase;
       color: #fff;
       padding: 8px 16px; }
@@ -205,6 +210,14 @@
       text-transform: uppercase;
       color: #fff;
       opacity: 0.4; }
+  .meter-readings li.false .indicator {
+    background: #ee4536; }
+  .meter-readings li.partly-true .indicator {
+    background: #f7971d; }
+  .meter-readings li.plausible .indicator {
+    background: #f8ca0f; }
+  .meter-readings li.true .indicator {
+    background: #4cae4e; }
   .meter-readings li.active .text {
     opacity: 1; }
 

@@ -32,7 +32,9 @@ pesacheck.directive("pesacheckTimeline", [
             tag: "question",
             position: 3,
             layout: "pesacheck-meter",
-            data: "Is the question realy needed?",
+            data: {
+              question: "Is the question realy needed?"
+            },
             timeout: 5
           },
           {
@@ -49,7 +51,7 @@ pesacheck.directive("pesacheckTimeline", [
             position: 5,
             layout: "pesacheck-meter",
             data: {
-              question: "Is the question realy needed?",
+              question: "Is Raila",
               verdict: 0
             },
             timeout: 5
@@ -61,6 +63,7 @@ pesacheck.directive("pesacheckTimeline", [
         function changeContext () {
           scope.layout= slides[count].layout + "-layout.html";
           scope.data = slides[count].data;
+          scope.tag = slides[count].tag;
           count++;
         }
 

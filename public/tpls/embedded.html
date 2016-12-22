@@ -9,23 +9,29 @@
 
 <script type="text/ng-template" id="pesacheck-meter-layout.html">
   <div class="slide dancing-meter">
-    <p>Is the question realy needed?</p>
-    <img src="./images/pesacheck-meter.svg" alt="Pesacheck truth meter" class="truthmeter">
+    <p>{{data.question}}</p>
+    <div ng-switch="data.verdict">
+      <img src="./images/pesacheck-meter-false.svg" ng-switch-when="0" ng alt="Pesacheck truth meter" class="truthmeter">
+      <img src="./images/pesacheck-meter-partly-true.svg" ng-switch-when="1" alt="Pesacheck truth meter" class="truthmeter">
+      <img src="./images/pesacheck-meter-plausible.svg" ng-switch-when="2" alt="Pesacheck truth meter" class="truthmeter">
+      <img src="./images/pesacheck-meter-true.svg" ng-switch-when="3" alt="Pesacheck truth meter" class="truthmeter">
+      <img src="./images/pesacheck-meter-blank.svg" ng-switch-default alt="Pesacheck truth meter" class="truthmeter">
+    <div>
     <div class="readings">
       <ul class="meter-readings">
-        <li class="false">
+        <li class="false" ng-class="data.verdict == 0 ? 'active': ''">
           <span class="indicator"></span>
           <span class="text">false</span>
         </li>
-        <li class="partly-true">
+        <li class="partly-true" ng-class="data.verdict == 1 ? 'active': ''">
           <span class="indicator"></span>
           <span class="text">partly true</span>
         </li>
-        <li class="plausible">
+        <li class="plausible" ng-class="data.verdict == 2 ? 'active': ''">
           <span class="indicator"></span>
           <span class="text">plausible</span>
         </li>
-        <li class="true">
+        <li class="true" ng-class="data.verdict == 3 ? 'active': ''">
           <span class="indicator"></span>
           <span class="text">true</span>
         </li>
@@ -43,17 +49,18 @@
 
 <script type="text/ng-template" id="numbers-layout.html">
   <div class="slide numbers story">
-    <p>What are the claims made?</p>
+    <p class="title">What are the claims made?</p>
     <div class="row">
       <div class="col-md-4 box">
         <h3>Athletes</h3>
         <p>Participants in the olympics 2016</p>
-        <span class="counter" pesacheck-counter>80</span>
+        <span class="counter">80</span>
+        <p>Billion Kenya Shillings</p>
       </div>
       <div class="col-md-4 box">
         <h3>Funding</h3>
         <p>Development and management of sports facilities in 2016/17</p>
-        <span class="counter">4.15B</span>
+        <span class="counter">4.15</span>
         <p>Billion Kenya Shillings</p>
       </div>
     </div>

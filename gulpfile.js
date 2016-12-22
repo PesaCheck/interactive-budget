@@ -1,5 +1,6 @@
 // include gulp
 var gulp = require('gulp');
+var deploy = require('gulp-gh-pages');
 
 var sass = require('gulp-sass');
 var concat = require('gulp-concat');
@@ -118,6 +119,11 @@ gulp.task('build', [
   'css-modules',
   'images'
 ])
+
+gulp.task('deploy', ['build'] ,function(){
+  return gulp.src("./public/**/*")
+    .pipe(deploy())
+})
 
 // run development
 // default task

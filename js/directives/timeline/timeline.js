@@ -64,6 +64,8 @@ pesacheck.directive("pesacheckTimeline", [
           scope.layout= slides[count].layout + "-layout.html";
           scope.data = slides[count].data;
           scope.tag = slides[count].tag;
+          scope.timeout = slides[count].timeout;
+          scope.position = slides[count].position;
           count++;
         }
 

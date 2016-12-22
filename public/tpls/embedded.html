@@ -2,21 +2,21 @@
   <section class="content" ng-include="layout">
 
   </section>
-  <section class="loader">
-    <div></div>
+  <section class="loader" pesacheck-slide-loader timeout="{{timeout}}" slide="{{position}}">
+    <div class="loading" ng-style="{width: loadingScale}"></div>
   </section>
 </div>
 
 <script type="text/ng-template" id="pesacheck-meter-layout.html">
-  <div class="slide dancing-meter">
+  <div class="slide pesacheck-meter">
     <p>{{data.question}}</p>
-    <div ng-switch="data.verdict">
+    <span ng-switch="data.verdict" class="meter">
       <img src="./images/pesacheck-meter-false.svg" ng-switch-when="0" ng alt="Pesacheck truth meter" class="truthmeter">
       <img src="./images/pesacheck-meter-partly-true.svg" ng-switch-when="1" alt="Pesacheck truth meter" class="truthmeter">
       <img src="./images/pesacheck-meter-plausible.svg" ng-switch-when="2" alt="Pesacheck truth meter" class="truthmeter">
       <img src="./images/pesacheck-meter-true.svg" ng-switch-when="3" alt="Pesacheck truth meter" class="truthmeter">
       <img src="./images/pesacheck-meter-blank.svg" ng-switch-default alt="Pesacheck truth meter" class="truthmeter">
-    <div>
+    <span>
     <div class="readings">
       <ul class="meter-readings">
         <li class="false" ng-class="data.verdict == 0 ? 'active': ''">

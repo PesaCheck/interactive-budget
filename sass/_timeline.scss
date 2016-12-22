@@ -39,8 +39,18 @@
   }
 
   .loader{
-    height: 30px;
-    background: #000;
+    height: 15px;
+    background: $yellowcol;
+
+
+    .loading{
+      display: inline-block;
+      width: 0px;
+      height: 15px;
+      position: relative;
+      background: $greencol;
+    }
+
   }
 
   .slide{
@@ -88,16 +98,22 @@
     }
   }
 
-  .slide.dancing-meter{
+
+  .slide.pesacheck-meter{
     display: flex;
     flex: 1;
     flex-direction: column;
     align-items: center;
     background: $primarycol;
 
+    .meter{
+      display: inline-block;
+    }
+
     p{
       display: inline-block;
       margin: 64px;
+      margin-bottom: 16px;
       font-size: $heading;
       text-transform: uppercase;
       color: #fff;
@@ -105,7 +121,7 @@
     }
 
     .readings{
-      margin-top: 64px;
+      margin-top: 32px;
     }
   }
 }
@@ -114,6 +130,8 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 0px;
+  margin: 0px;
 
   li{
     list-style: none;

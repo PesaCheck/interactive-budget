@@ -148,8 +148,14 @@
   .timeline .content.ng-leave.ng-leave-active {
     top: 50px; }
   .timeline .loader {
-    height: 30px;
-    background: #000; }
+    height: 15px;
+    background: #f8ca0f; }
+    .timeline .loader .loading {
+      display: inline-block;
+      width: 0px;
+      height: 15px;
+      position: relative;
+      background: #4cae4e; }
   .timeline .slide {
     display: flex;
     flex-direction: column;
@@ -175,26 +181,31 @@
     .timeline .image-headline h2 span {
       padding: 0.3em;
       background: #2a74aa; }
-  .timeline .slide.dancing-meter {
+  .timeline .slide.pesacheck-meter {
     display: flex;
     flex: 1;
     flex-direction: column;
     align-items: center;
     background: #2a74aa; }
-    .timeline .slide.dancing-meter p {
+    .timeline .slide.pesacheck-meter .meter {
+      display: inline-block; }
+    .timeline .slide.pesacheck-meter p {
       display: inline-block;
       margin: 64px;
+      margin-bottom: 16px;
       font-size: 24px;
       text-transform: uppercase;
       color: #fff;
       padding: 8px 16px; }
-    .timeline .slide.dancing-meter .readings {
-      margin-top: 64px; }
+    .timeline .slide.pesacheck-meter .readings {
+      margin-top: 32px; }
 
 .meter-readings {
   display: flex;
   flex-direction: row;
-  justify-content: space-between; }
+  justify-content: space-between;
+  padding: 0px;
+  margin: 0px; }
   .meter-readings li {
     list-style: none;
     display: flex;

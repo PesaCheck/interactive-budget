@@ -85,8 +85,8 @@
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     border: 1px solid #2a74aa;
-    height: 350px;
-    min-height: 350px;
+    height: 300px;
+    min-height: 300px;
     padding: 32px;
     padding-bottom: 0px;
     background: #ffffff; }
@@ -130,23 +130,6 @@
   .timeline .content {
     display: flex;
     flex: 1; }
-  .timeline .content.ng-enter, .timeline .content.ng-leave {
-    transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    display: block;
-    padding: 10px; }
-  .timeline .content.ng-enter {
-    top: -50px; }
-  .timeline .content.ng-enter.ng-enter-active {
-    top: 0; }
-  .timeline .content.ng-leave {
-    top: 0; }
-  .timeline .content.ng-leave.ng-leave-active {
-    top: 50px; }
   .timeline .loader {
     height: 15px;
     background: #f8ca0f; }
@@ -161,11 +144,23 @@
     flex-direction: column;
     flex: 1; }
   .timeline .numbers {
-    padding: 32px; }
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: linear-gradient(to bottom, #2a74aa 0%, #2a74aa 50%, #fff 50%, #fff 100%); }
     .timeline .numbers .title {
       text-transform: uppercase;
       font-size: 24px;
-      color: #2a74aa; }
+      color: #fff;
+      padding: 32px;
+      margin-bottom: 32px; }
+    .timeline .numbers .numbers-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 32px; }
+      .timeline .numbers .numbers-row .box {
+        width: 30%; }
   .timeline .image-headline {
     display: block;
     position: relative; }
@@ -195,10 +190,22 @@
       margin-bottom: 16px;
       font-size: 24px;
       text-transform: uppercase;
+      text-align: center;
       color: #fff;
       padding: 8px 16px; }
     .timeline .slide.pesacheck-meter .readings {
       margin-top: 32px; }
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg); } }
+    .timeline .slide.pesacheck-meter .meter-pointer {
+      -webkit-animation-name: rotate;
+      -webkit-animation-duration: 1.5s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear; }
 
 .meter-readings {
   display: flex;

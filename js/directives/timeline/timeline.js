@@ -1,6 +1,6 @@
 pesacheck.directive("pesacheckTimeline", [
-  "$timeout",
-  function($timeout){
+  "$timeout","$animate",
+  function($timeout, $animate){
     return {
       restrict: "A",
       replace: false,
@@ -23,7 +23,21 @@ pesacheck.directive("pesacheckTimeline", [
             position: 2,
             layout: "numbers",
             data: {
-
+              title: "What are the claims made?",
+              stats: [
+                {
+                  heading: "Athletes",
+                  description: "Participants in the olympics 2016",
+                  figure: "80",
+                  figureMeta: "Billion Kenya Shillings"
+                },
+                {
+                  heading: "Athletes",
+                  description: "Participants in the olympics 2016",
+                  figure: "80",
+                  figureMeta: "Billion Kenya Shillings"
+                }
+              ]
             },
             timeout: 5
           },
@@ -42,7 +56,23 @@ pesacheck.directive("pesacheckTimeline", [
             tag: "facts",
             position: 4,
             layout: "numbers",
-            data: {},
+            data: {
+              title: "What are the claims made?",
+              stats: [
+                {
+                  heading: "Athletes",
+                  description: "Participants in the olympics 2016",
+                  figure: "80",
+                  figureMeta: "Billion Kenya Shillings"
+                },
+                {
+                  heading: "Athletes",
+                  description: "Participants in the olympics 2016",
+                  figure: "80",
+                  figureMeta: "Billion Kenya Shillings"
+                }
+              ]
+            },
             timeout: 5
           },
           {
@@ -71,8 +101,7 @@ pesacheck.directive("pesacheckTimeline", [
 
         function changeSlide () {
           $timeout(function () {
-             changeContext()
-             console.log(scope.layout)
+             changeContext();
              if (count < slides.length) {
                 changeSlide();
              }
@@ -81,6 +110,19 @@ pesacheck.directive("pesacheckTimeline", [
 
         changeContext();
         changeSlide();
+
+        $animate.on('enter', element,
+           function callback(el, phase) {
+             $(element).addClass('animated fadeIn');
+           }
+        );
+
+        $animate.on('leave', element,
+           function callback(el, phase) {
+             $(el).addClass('animated fadeOutLeft');
+             // cool we detected an enter animation within the container
+           }
+        );
     }
   }
 }]);

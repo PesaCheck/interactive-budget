@@ -20,7 +20,8 @@ var deps = {
     PATHS.node + "angular-ui-router/release/angular-ui-router.js",
     PATHS.node + "angular-ui-bootstrap/dist/ui-bootstrap.js",
     PATHS.node + "angular-ui-bootstrap/dist/ui-bootstrap-tpls.js",
-    PATHS.node + "jquery/dist/jquery.js"
+    PATHS.node + "jquery/dist/jquery.js",
+    PATHS.node + "angular-animate/angular-animate.js"
   ],
   css: [
     PATHS.node + "bootstrap/dist/css/bootstrap.css",

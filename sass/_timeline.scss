@@ -12,32 +12,6 @@
     flex: 1;
   }
 
-  .content.ng-enter, .content.ng-leave {
-    transition:all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-
-    position:absolute;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    display:block;
-    padding:10px;
-  }
-
-  .content.ng-enter {
-    top:-50px;
-  }
-  .content.ng-enter.ng-enter-active {
-    top:0;
-  }
-
-  .content.ng-leave {
-    top:0;
-  }
-  .content.ng-leave.ng-leave-active {
-    top:50px;
-  }
-
   .loader{
     height: 15px;
     background: $yellowcol;
@@ -61,12 +35,34 @@
 
 
   .numbers{
-    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: linear-gradient(
+      to bottom,
+      $primarycol 0%,
+      $primarycol 50%,
+      #fff 50%,
+      #fff 100%
+    );
 
     .title{
       text-transform: uppercase;
       font-size: $heading;
-      color: $primarycol;
+      color: #fff;
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+
+    .numbers-row{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 32px;
+
+      .box{
+        width: 30%;
+      }
     }
   }
   .image-headline{
@@ -116,12 +112,29 @@
       margin-bottom: 16px;
       font-size: $heading;
       text-transform: uppercase;
+      text-align: center;
       color: #fff;
       padding: 8px 16px;
     }
 
     .readings{
       margin-top: 32px;
+    }
+
+    @-webkit-keyframes rotate {
+      from {
+          -webkit-transform: rotate(0deg);
+      }
+      to {
+          -webkit-transform: rotate(360deg);
+      }
+    }
+
+    .meter-pointer{
+      -webkit-animation-name: rotate;
+      -webkit-animation-duration: 1.5s;
+      -webkit-animation-iteration-count: infinite;
+      -webkit-animation-timing-function: linear;
     }
   }
 }

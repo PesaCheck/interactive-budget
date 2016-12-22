@@ -42,8 +42,8 @@
 
 <script type="text/ng-template" id="image-headline-layout.html">
   <div class="slide image-headline">
-    <img class="img-responsive" src="http://www.kenya-today.com/wp-content/uploads/2015/10/179.jpg"/>
-    <p>Is the question realy needed?</p>
+    <img class="img-responsive" ng-src="{{data.imageUri}}"/>
+    <h2><span>{{data.headline}}</span></h2>
   </div>
 </script>
 

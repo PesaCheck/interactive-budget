@@ -235,8 +235,8 @@ pesacheck.directive("pesacheckTimeline", [
             position: 1,
             layout: "image-headline",
             data: {
-              imageUri: "",
-              headline: ""
+              imageUri: "http://www.kenya-today.com/wp-content/uploads/2015/10/179.jpg",
+              headline: "the Former Prime Minister accuses the government of failing to account for some funds received from the Eurobond issued in June 2014."
             },
             timeout: 5
           },
@@ -256,7 +256,7 @@ pesacheck.directive("pesacheckTimeline", [
             position: 3,
             layout: "pesacheck-meter",
             data: {
-              question: "Is the question realy needed?"
+              question: "is Mr. Raila Odinga justified in warning investors off a potential second Eurobond Issue?"
             },
             timeout: 5
           },
@@ -274,7 +274,7 @@ pesacheck.directive("pesacheckTimeline", [
             position: 5,
             layout: "pesacheck-meter",
             data: {
-              question: "Is Raila",
+              question: "is Mr. Raila Odinga justified in warning investors off a potential second Eurobond Issue?",
               verdict: 0
             },
             timeout: 5

@@ -158,21 +158,23 @@
     padding: 32px; }
     .timeline .numbers .title {
       text-transform: uppercase;
-      font-size: 32px;
+      font-size: 24px;
       color: #2a74aa; }
   .timeline .image-headline {
     display: block;
     position: relative; }
-    .timeline .image-headline p {
+    .timeline .image-headline h2 {
       display: inline-block;
       margin: 0px 24px;
-      background: #2a74aa;
-      font-size: 32px;
+      font-size: 1.8em;
       text-transform: uppercase;
       color: #fff;
-      padding: 16px;
       top: -300px;
-      position: relative; }
+      position: relative;
+      line-height: 2.4em; }
+    .timeline .image-headline h2 span {
+      padding: 0.3em;
+      background: #2a74aa; }
   .timeline .slide.dancing-meter {
     display: flex;
     flex: 1;
@@ -182,7 +184,7 @@
     .timeline .slide.dancing-meter p {
       display: inline-block;
       margin: 64px;
-      font-size: 32px;
+      font-size: 24px;
       text-transform: uppercase;
       color: #fff;
       padding: 8px 16px; }

@@ -129,15 +129,35 @@
   width: 800px; }
   .timeline .content {
     display: flex;
-    flex: 1;
-    border: 3px solid #000; }
+    flex: 1; }
+  .timeline .content.ng-enter, .timeline .content.ng-leave {
+    transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: block;
+    padding: 10px; }
+  .timeline .content.ng-enter {
+    top: -50px; }
+  .timeline .content.ng-enter.ng-enter-active {
+    top: 0; }
+  .timeline .content.ng-leave {
+    top: 0; }
+  .timeline .content.ng-leave.ng-leave-active {
+    top: 50px; }
   .timeline .loader {
     height: 30px;
     background: #000; }
-  .timeline .slide.image-headline {
+  .timeline .slide {
+    display: flex;
+    flex-direction: column;
+    flex: 1; }
+  .timeline .image-headline {
     display: block;
     position: relative; }
-    .timeline .slide.image-headline p {
+    .timeline .image-headline p {
       display: inline-block;
       margin: 0px 24px;
       background: #000;

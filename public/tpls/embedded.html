@@ -1,92 +1,61 @@
-<div class="timeline">
-  <section class="content">
-    <!-- <div class="slide image-headline">
-      <img class="img-responsive" src="http://www.kenya-today.com/wp-content/uploads/2015/10/179.jpg"/>
-      <p>Is the question realy needed?</p>
-    </div> -->
-    <!-- <div class="slide numbers story">
-      <p>What are the claims made?</p>
-      <div class="row">
-        <div class="col-md-4 box">
-          <h3>Athletes</h3>
-          <p>Participants in the olympics 2016</p>
-          <span class="counter" pesacheck-counter>80</span>
+<div class="timeline" pesacheck-timeline>
+  <section class="content" ng-include="layout">
 
-        </div>
-        <div class="col-md-4 box">
-          <h3>Funding</h3>
-          <p>Development and management of sports facilities in 2016/17</p>
-          <span class="counter">4.15B</span>
-          <p>Billion Kenya Shillings</p>
-        </div> -->
-        <!-- <div class="slide dancing-meter">
-          <p>Is the question realy needed?</p>
-          <img src="./images/pesacheck-meter.svg" alt="Pesacheck truth meter" class="truthmeter">
-          <div class="readings">
-            <ul class="meter-readings">
-              <li class="false">
-                <span class="indicator"></span>
-                <span class="text">false</span>
-              </li>
-              <li class="partly-true">
-                <span class="indicator"></span>
-                <span class="text">partly true</span>
-              </li>
-              <li class="plausible">
-                <span class="indicator"></span>
-                <span class="text">plausible</span>
-              </li>
-              <li class="true">
-                <span class="indicator"></span>
-                <span class="text">true</span>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div> -->
-    <!-- <div class="slide numbers story">
-      <p>PesaCheck has researched the issue and here are our findings</p>
-      <div class="row">
-        <div class="col-md-6 box">
-          <h3>Athletes</h3>
-          <p>Participants in the olympics 2016</p>
-          <span class="counter" pesacheck-counter>80</span>
-        </div>
-        <div class="col-md-6 box">
-          <h3>Funding</h3>
-          <p>Development and management of sports facilities in 2016/17</p>
-          <span class="counter">4.15B</span>
-          <p>Billion Kenya Shillings</p>
-        </div>
-      </div>
-    </div> -->
-    <div class="slide dancing-meter">
-      <p>Is the question realy needed?</p>
-      <img src="./images/pesacheck-meter.svg" alt="Pesacheck truth meter" class="truthmeter">
-      <div class="readings">
-        <ul class="meter-readings">
-          <li class="false active">
-            <span class="indicator"></span>
-            <span class="text">false</span>
-          </li>
-          <li class="partly-true">
-            <span class="indicator"></span>
-            <span class="text">partly true</span>
-          </li>
-          <li class="plausible">
-            <span class="indicator"></span>
-            <span class="text">plausible</span>
-          </li>
-          <li class="true">
-            <span class="indicator"></span>
-            <span class="text">true</span>
-          </li>
-        </ul>
-      </div>
-    </div>
   </section>
   <section class="loader">
     <div></div>
   </section>
 </div>
+
+<script type="text/ng-template" id="pesacheck-meter-layout.html">
+  <div class="slide dancing-meter">
+    <p>Is the question realy needed?</p>
+    <img src="./images/pesacheck-meter.svg" alt="Pesacheck truth meter" class="truthmeter">
+    <div class="readings">
+      <ul class="meter-readings">
+        <li class="false">
+          <span class="indicator"></span>
+          <span class="text">false</span>
+        </li>
+        <li class="partly-true">
+          <span class="indicator"></span>
+          <span class="text">partly true</span>
+        </li>
+        <li class="plausible">
+          <span class="indicator"></span>
+          <span class="text">plausible</span>
+        </li>
+        <li class="true">
+          <span class="indicator"></span>
+          <span class="text">true</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</script>
+
+<script type="text/ng-template" id="image-headline-layout.html">
+  <div class="slide image-headline">
+    <img class="img-responsive" src="http://www.kenya-today.com/wp-content/uploads/2015/10/179.jpg"/>
+    <p>Is the question realy needed?</p>
+  </div>
+</script>
+
+<script type="text/ng-template" id="numbers-layout.html">
+  <div class="slide numbers story">
+    <p>What are the claims made?</p>
+    <div class="row">
+      <div class="col-md-4 box">
+        <h3>Athletes</h3>
+        <p>Participants in the olympics 2016</p>
+        <span class="counter" pesacheck-counter>80</span>
+      </div>
+      <div class="col-md-4 box">
+        <h3>Funding</h3>
+        <p>Development and management of sports facilities in 2016/17</p>
+        <span class="counter">4.15B</span>
+        <p>Billion Kenya Shillings</p>
+      </div>
+    </div>
+  </div>
+</script>

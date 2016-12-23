@@ -34,6 +34,14 @@ pesacheck.config(function($stateProvider, $locationProvider){
       controllerAs: 'Stories'
     })
 
+    .state("edit-story", {
+      parent: "admin",
+      templateUrl: "tpls/edit-story.html",
+      url: "/story/edit",
+      controller: "editStoryCtrl",
+      controllerAs: 'Story'
+    })
+
   // use the HTML5 History API
   // $locationProvider.html5Mode(true);
 });

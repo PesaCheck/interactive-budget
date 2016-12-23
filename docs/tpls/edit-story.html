@@ -1,0 +1,71 @@
+<div class="container story">
+  <div class="row">
+    <span class="page-title">Edit Story</span>
+    <div class="btn-group pull-right" role="group" aria-label="stories buttons">
+      <button type="button" class="btn btn-new">Update</button>
+    </div>
+  </div>
+  <div class="row page-container">
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a ui-sref="stories">Stories</a></li>
+      <li class="active"><a href="#">Story name</a></li>
+    </ol>
+    <form>
+      <uib-tabset active="0" >
+        <uib-tab index="0" heading="Introduction">
+          <div class="form-group">
+            <label for="introHeadline">Headline</label>
+            <input type="text" class="form-control" id="introHeadline" ng-model="Story.headline">
+          </div>
+          <div class="form-group">
+            <label for="introImage">Image URL</label>
+            <input type="url" class="form-control" id="introImage" ng-model="Story.headlineImage">
+          </div>
+          <div class="form-group">
+            <label for="introDuration">Duration</label>
+            <input type="number" class="form-control" id="introDuration" ng-model="Story.headlineImage" ng-min="5">
+          </div>
+        </uib-tab>
+        <uib-tab index="1" heading="Meter">
+          <div class="form-group">
+            <label for="meterQuestion">Question</label>
+            <input type="text" class="form-control" id="meterQuestion" ng-model="Story.meterQuestion">
+          </div>
+          <div class="form-group">
+            <label for="meterVerdict">Verdict</label>
+            <div class="checkbox">
+              <label class="radio-inline">
+                <input type="radio" >False
+              </label>
+              <label class="radio-inline">
+                <input type="radio" >Partly True
+              </label>
+              <label class="radio-inline">
+                <input type="radio" >Plausible
+              </label>
+              <label class="radio-inline">
+                <input type="radio" >True
+              </label>
+            </div>
+          </div>
+        </uib-tab>
+        <uib-tab index="2" heading="Explanation">Explanation content</uib-tab>
+        <uib-tab index="3" heading="Findings">Findings content</uib-tab>
+        <uib-tab index="4" heading="Source">
+          <div class="form-group">
+            <label for="meterQuestion">Add a source for this fact check</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Source">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Add</button>
+              </span>
+            </div>
+          </div>
+        </uib-tab>
+      </uib-tabset>
+    </form>
+
+    <div class="col-sm-9"></div>
+  </div>
+</div>

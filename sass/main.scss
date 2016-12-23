@@ -75,5 +75,6 @@
     padding: 32px;
     background: $whitecol;
     border: 1px solid #EEEEEE;
+    min-height: calc(100vh - 200px);
   }
 }

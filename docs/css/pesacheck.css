@@ -295,4 +295,5 @@
   .page .page-container {
     padding: 32px;
     background: #ffffff;
-    border: 1px solid #EEEEEE; }
+    border: 1px solid #EEEEEE;
+    min-height: calc(100vh - 200px); }

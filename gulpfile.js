@@ -39,19 +39,19 @@ gulp.task("js-dependencies", function(){
    gulp.src(deps.js)
     .pipe(concat('pesacheck.deps.js'))
     // .pipe(uglify()).on('error', gulpUtil.log)
-    .pipe(gulp.dest('./public/js/'))
+    .pipe(gulp.dest('./docs/js/'))
 
 });
 // build CSS library dependencies
 gulp.task("css-dependencies", function(){
    gulp.src(deps.css)
     .pipe(concat('pesacheck.deps.css'))
-    .pipe(gulp.dest('./public/css/'))
+    .pipe(gulp.dest('./docs/css/'))
 })
 
 gulp.task("fonts", function(){
   gulp.src(deps.fonts)
-    .pipe(gulp.dest('./public/fonts/'))
+    .pipe(gulp.dest('./docs/fonts/'))
 })
 
 // main app files
@@ -61,27 +61,27 @@ gulp.task("main", function(){
        "./app.js",
        "./package.json"
    ])
-   .pipe(gulp.dest("./public/"));
+   .pipe(gulp.dest("./docs/"));
 });
 
 // copy images
 gulp.task("images", function(){
   gulp.src('images/**/**.**')
-    .pipe(gulp.dest('./public/images'));
+    .pipe(gulp.dest('./docs/images'));
 })
 
 // build html template files
 gulp.task("templates", function(){
   gulp.src("templates/**/**.html")
     .pipe(flatten())
-    .pipe(gulp.dest("./public/tpls"))
+    .pipe(gulp.dest("./docs/tpls"))
 });
 
 // build js modules
 gulp.task("js-modules", function(){
   gulp.src("js/**/**.js")
     .pipe(concat('pesacheck.js'))
-    .pipe(gulp.dest('./public/js'))
+    .pipe(gulp.dest('./docs/js'))
 })
 
 // build css modules
@@ -89,12 +89,12 @@ gulp.task("css-modules", function(){
   gulp.src("sass/**/**.scss")
     .pipe(sass().on('error', sass.logError))
     .pipe(concat('pesacheck.css'))
-    .pipe(gulp.dest('./public/css'))
+    .pipe(gulp.dest('./docs/css'))
 })
 
 // serve a build
 gulp.task('webserver', function(){
-  gulp.src('public')
+  gulp.src('docs')
    .pipe(webserver({
      livereload: true,
      open: true,
@@ -105,7 +105,7 @@ gulp.task('webserver', function(){
 
 // watch for file changes
 gulp.task('watch', function(){
-  return gulp.watch(['./**/**.**', '!./public/**'], ['build'])
+  return gulp.watch(['./**/**.**', '!./docs/**'], ['build'])
 });
 
 // build website
@@ -121,7 +121,7 @@ gulp.task('build', [
 ])
 
 gulp.task('deploy', ['build'] ,function(){
-  return gulp.src("./public/**/*")
+  return gulp.src("./docs/**/*")
     .pipe(deploy())
 })
 

@@ -253,18 +253,46 @@
   width: 140px;
   height: auto; }
 
-.navbar-default .navbar-toggle {
+.navbar-default {
   background: #2a74aa;
-  border: none;
-  border-radius: 0px; }
-  .navbar-default .navbar-toggle .icon-bar {
-    background-color: #ffffff; }
-
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  background: #2a74aa;
-  color: #fff; }
+  border-color: #2a74aa; }
+  .navbar-default .navbar-toggle {
+    background: #ffffff;
+    border: none;
+    border-radius: 0px; }
+    .navbar-default .navbar-toggle .icon-bar {
+      background-color: #2a74aa; }
+  .navbar-default .navbar-nav > .active > a,
+  .navbar-default .navbar-nav > .active > a:hover,
+  .navbar-default .navbar-nav > .active > a:focus {
+    background: #ffffff;
+    color: #2a74aa; }
+  .navbar-default .navbar-nav > li > a {
+    color: #ffffff; }
 
 .page {
-  margin-top: 50px; }
+  margin-top: 50px;
+  height: calc(100vh - 50px);
+  background: linear-gradient(to bottom, #2a74aa 0%, #2a74aa 30%, #F5F5F5 30%, #F5F5F5 100%); }
+  .page .page-title {
+    color: #ffffff;
+    text-transform: uppercase;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 32px;
+    font-size: 2em; }
+  .page .btn-new {
+    background: #ee4536;
+    color: #ffffff;
+    border: none;
+    border-radius: 0px;
+    text-transform: uppercase; }
+  .page .breadcrumb {
+    background-color: #ffffff;
+    padding-left: 0px; }
+    .page .breadcrumb a {
+      color: #2a74aa; }
+  .page .page-container {
+    padding: 32px;
+    background: #ffffff;
+    border: 1px solid #EEEEEE; }

@@ -22,7 +22,15 @@ pesacheck.config(function($stateProvider, $locationProvider){
 
     .state("embedded", {
       templateUrl: "tpls/embedded.html",
-      url: "/"
+      url: "/embedded"
+    })
+
+    .state("stories", {
+      parent: "admin",
+      templateUrl: "tpls/stories.html",
+      url: "/stories",
+      controller: "pesacheckStoriesCtrl",
+      controllerAs: 'Stories'
     })
 
   // use the HTML5 History API
@@ -31,5 +39,5 @@ pesacheck.config(function($stateProvider, $locationProvider){
 
 
 pesacheck.run(function($state){
-  $state.transitionTo('embedded');
+  $state.transitionTo('stories');
 });

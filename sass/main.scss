@@ -3,32 +3,77 @@
 @import 'timeline';
 @import 'variables';
 
-
-
 .logo{
   width: 140px;
   height: auto;
 }
 
 .navbar-default {
+  background: $primarycol;
+  border-color: $primarycol;
+
   .navbar-toggle{
-    background: $primarycol;
+    background: $whitecol;
     border: none;
     border-radius: 0px;
 
     .icon-bar{
-      background-color: $whitecol;
+      background-color: $primarycol;
     }
   }
 
   .navbar-nav > .active > a,
   .navbar-nav > .active > a:hover,
   .navbar-nav > .active > a:focus{
-    background: #2a74aa;
-    color: #fff;
+    background: $whitecol;
+    color: $primarycol;
+  }
+
+  .navbar-nav > li > a{
+    color: $whitecol;
   }
 }
 
 .page{
   margin-top: 50px;
+  height: calc(100vh - 50px);
+  background: linear-gradient(
+    to bottom,
+    $primarycol 0%,
+    $primarycol 30%,
+    $graywhitecol 30%,
+    $graywhitecol 100%
+  );
+
+  .page-title{
+    color: $whitecol;
+    text-transform: uppercase;
+    padding: 0px;
+    margin: 0px;
+    margin-bottom: 32px;
+    font-size: 2em;
+  }
+
+  .btn-new{
+    background: $redcol;
+    color: $whitecol;
+    border: none;
+    border-radius: 0px;
+    text-transform: uppercase;
+  }
+
+  .breadcrumb{
+    background-color: $whitecol;
+    padding-left: 0px;
+
+    a{
+      color: $primarycol;
+    }
+  }
+
+  .page-container{
+    padding: 32px;
+    background: $whitecol;
+    border: 1px solid #EEEEEE;
+  }
 }

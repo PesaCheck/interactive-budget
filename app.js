@@ -12,7 +12,7 @@ pesacheck.config(function($stateProvider, $locationProvider){
     .state("home", {
       parent: "admin",
       templateUrl: "tpls/home.html",
-      url: "/"
+      url: "/home"
     })
     .state("story", {
       parent: "admin",
@@ -22,11 +22,11 @@ pesacheck.config(function($stateProvider, $locationProvider){
 
     .state("embedded", {
       templateUrl: "tpls/embedded.html",
-      url: "/embedded"
+      url: "/"
     })
 
   // use the HTML5 History API
-  $locationProvider.html5Mode(true);
+  // $locationProvider.html5Mode(true);
 });
 
 

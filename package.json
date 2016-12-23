@@ -13,11 +13,13 @@
     "angular-animate": "^1.5.8",
     "angular-ui-bootstrap": "^2.2.0",
     "angular-ui-router": "^0.3.1",
+    "angular-uuid": "0.0.4",
     "animate.css": "^3.5.2",
     "bootstrap": "^3.3.7",
     "chart.js": "^2.3.0",
     "gulp-ng-constant": "^2.0.0-2",
-    "gulp-webserver": "^0.9.1"
+    "gulp-webserver": "^0.9.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

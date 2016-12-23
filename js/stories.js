@@ -1,6 +1,6 @@
 pesacheck.controller("pesacheckStoriesCtrl", [
-  "$scope",
-  function($scope){
+  "$scope","$uibModal",
+  function($scope, $uibModal){
     var self = this;
     var stories = [
       {
@@ -18,8 +18,67 @@ pesacheck.controller("pesacheckStoriesCtrl", [
     ];
 
 
+    function createStory(size, position){
+      var modalInstance = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'createStory.html',
+        controller: 'createStoryCtrl',
+        controllerAs: '$ctrl',
+        size: 'lg',
+        resolve: {
+
+        }
+      });
+
+      modalInstance.result.then(function (createdStory) {
+        self.story = createdStory;
+        console.log(createdStory)
+      }, function () {
+        console.log('Modal dismissed at: ' + new Date());
+      });
+    }
+
+
     angular.extend(self, {
-      log: stories
+      log: stories,
+      newStory: createStory
     })
+  }
+]);
+
+pesacheck.controller("createStoryCtrl", [
+  "$uibModalInstance","_","uuid",
+  function($uibModalInstance, _, uuid){
+    var $ctrl = this;
+
+    angular.extend($ctrl, {
+      story: {
+        id: uuid.v4(),
+        name: "",
+        tags: [],
+        createdOn: new Date(),
+        published: false
+      },
+      ok: function () {
+        $uibModalInstance.close($ctrl.story);
+      },
+      cancel: function () {
+        $uibModalInstance.dismiss('cancel');
+      },
+      selectTag: function(tag){
+        if(_.contains($ctrl.story.tags, tag)){
+          $ctrl.story.tags = _.without($ctrl.story.tags, tag);
+        }else{
+          $ctrl.story.tags.push(tag);
+        }
+      }
+
+    });
+
+    function createStory(){
+
+    }
   }
 ]);

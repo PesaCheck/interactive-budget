@@ -1,7 +1,8 @@
 var pesacheck = angular.module("PesaCheck", [
   'ui.router',
   'ui.bootstrap',
-  'ngAnimate'
+  'ngAnimate',
+  'angular-uuid'
 ]);
 
 pesacheck.config(function($stateProvider, $locationProvider){
@@ -37,6 +38,9 @@ pesacheck.config(function($stateProvider, $locationProvider){
   // $locationProvider.html5Mode(true);
 });
 
+
+// define constants
+pesacheck.constant('_',window._);
 
 pesacheck.run(function($state){
   $state.transitionTo('stories');

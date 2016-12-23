@@ -2,7 +2,7 @@
   <div class="row">
     <span class="page-title">Stories</span>
     <div class="btn-group pull-right" role="group" aria-label="stories buttons">
-      <button type="button" class="btn btn-new">New Story</button>
+      <button type="button" class="btn btn-new" ng-click="Stories.newStory();">New Story</button>
     </div>
   </div>
   <div class="row page-container">
@@ -30,12 +30,34 @@
   </div>
 </div>
 
-<script type="text/ng-template" id="newStoryModal.html">
+<script type="text/ng-template" id="createStory.html">
     <div class="modal-header">
         <h3 class="modal-title" id="modal-title">Create a new story</h3>
     </div>
     <div class="modal-body" id="modal-body">
-
+      <form>
+        <div class="form-group">
+          <label for="storyName">Story Title</label>
+          <input type="text" class="form-control" id="storyName" ng-model="$ctrl.story.name">
+        </div>
+        <div class="form-group">
+          <label for="storyName">Tags</label>
+          <div class="checkbox">
+            <label class="checkbox-inline">
+              <input type="checkbox"  ng-click="$ctrl.selectTag('health_welfare')">Health / Welfare
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox"  ng-click="$ctrl.selectTag('water_sanitation')">Water / Sanitation
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" ng-click="$ctrl.selectTag('education')">Education
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" ng-click="$ctrl.selectTag('rural_development')">Rural Development
+            </label>
+          </div>
+        </div>
+      </form>
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>

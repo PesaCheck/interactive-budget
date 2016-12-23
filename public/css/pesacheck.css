@@ -152,15 +152,14 @@
       text-transform: uppercase;
       font-size: 24px;
       color: #fff;
-      padding: 32px;
-      margin-bottom: 32px; }
+      padding: 32px; }
     .timeline .numbers .numbers-row {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       padding: 32px; }
       .timeline .numbers .numbers-row .box {
-        width: 30%; }
+        width: 40%; }
   .timeline .image-headline {
     display: block;
     position: relative; }

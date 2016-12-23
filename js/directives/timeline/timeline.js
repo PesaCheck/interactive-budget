@@ -23,18 +23,24 @@ pesacheck.directive("pesacheckTimeline", [
             position: 2,
             layout: "numbers",
             data: {
-              title: "What are the claims made?",
+              title: "Mr. Raila Odinga claims that the Eurobond funds were not fully deposited into the Consolidated Fund",
               stats: [
+                /*{
+                  heading: "Eurobond's Net Proceeds",
+                  description: "Funds to be deposited in the Consolidated Fund",
+                  figure: "173.9",
+                  figureMeta: "Billion Kenya Shillings"
+                },*/
                 {
-                  heading: "Athletes",
-                  description: "Participants in the olympics 2016",
-                  figure: "80",
+                  heading: "Eurobond issue",
+                  description: "Funds that were deposited in the Consolidated Fund",
+                  figure: "39.5",
                   figureMeta: "Billion Kenya Shillings"
                 },
                 {
-                  heading: "Athletes",
-                  description: "Participants in the olympics 2016",
-                  figure: "80",
+                  heading: "Tap Sales",
+                  description: "proceeds that were deposited in the Consolidated Fund",
+                  figure: "81.5",
                   figureMeta: "Billion Kenya Shillings"
                 }
               ]
@@ -57,20 +63,20 @@ pesacheck.directive("pesacheckTimeline", [
             position: 4,
             layout: "numbers",
             data: {
-              title: "What are the claims made?",
+              title: "PesaCheck's findings",
               stats: [
                 {
-                  heading: "Athletes",
-                  description: "Participants in the olympics 2016",
-                  figure: "80",
-                  figureMeta: "Billion Kenya Shillings"
-                },
-                {
-                  heading: "Athletes",
-                  description: "Participants in the olympics 2016",
-                  figure: "80",
+                  heading: "Proceeds deposited in Sep and Dec 2014",
+                  description: "Amount transferred by the Government into a Sovereign Bond account at Central Bank",
+                  figure: "88.46",
                   figureMeta: "Billion Kenya Shillings"
                 }
+                /*{
+                  heading: "Athletes",
+                  description: "Participants in the olympics 2016",
+                  figure: "80",
+                  figureMeta: "Billion Kenya Shillings"
+                }*/
               ]
             },
             timeout: 5

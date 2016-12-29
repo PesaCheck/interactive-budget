@@ -122,7 +122,7 @@ pesacheck.controller("previewStoryCtrl", [
   "$uibModalInstance","id",
   function($uibModalInstance, id){
     var self = this;
-
+    console.log(id)
     angular.extend(self, {
       id: id,
       ok: function () {
@@ -446,7 +446,6 @@ pesacheck.directive("pesacheckTimeline", [
           },
           function(newVal, oldVal){
             story = $Story.get(newVal);
-            console.log(newVal)
 
             story.$loaded(
               function(data) {

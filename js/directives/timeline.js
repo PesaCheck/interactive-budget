@@ -14,7 +14,6 @@ pesacheck.directive("pesacheckTimeline", [
           },
           function(newVal, oldVal){
             story = $Story.get(newVal);
-            console.log(newVal)
 
             story.$loaded(
               function(data) {

@@ -111,7 +111,7 @@ pesacheck.controller("previewStoryCtrl", [
   "$uibModalInstance","id",
   function($uibModalInstance, id){
     var self = this;
-
+    console.log(id)
     angular.extend(self, {
       id: id,
       ok: function () {

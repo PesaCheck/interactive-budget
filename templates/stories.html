@@ -1,0 +1,88 @@
+<div class="container story">
+  <div class="row">
+    <span class="page-title">Stories</span>
+    <div class="btn-group pull-right" role="group" aria-label="stories buttons">
+      <button type="button" class="btn btn-new" ng-click="Stories.newStory();">New Story</button>
+    </div>
+  </div>
+  <div class="row page-container">
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li class="active"><a href="#">Stories</a></li>
+    </ol>
+    <div class="table-responsive">
+
+      <table class="table table-striped table-hover">
+        <tr>
+          <th>Story</th>
+          <th>Date created</th>
+          <th>Published</th>
+          <th></th>
+        </tr>
+        <tr ng-repeat="story in stories">
+          <td>{{story.name}}</td>
+          <td>{{story.createdOn}}</td>
+          <td>{{story.published}}</td>
+          <td>
+            <div class="btn-group pull-right" role="group" aria-label="stories buttons">
+              <button type="button" class="btn btn-edit" ui-sref="edit-story({ id: story.$id})">Edit</button>
+              <button type="button" class="btn btn-preview" ng-click="Stories.preview(story.$id)">Preview</button>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script type="text/ng-template" id="createStory.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Create a new story</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="storyName">Story Title</label>
+          <input type="text" class="form-control" id="storyName" ng-model="$ctrl.story.name">
+        </div>
+        <div class="form-group">
+          <label for="storyName">Tags</label>
+          <div class="checkbox">
+            <label class="checkbox-inline">
+              <input type="checkbox"  ng-click="$ctrl.selectTag('health_welfare')">Health / Welfare
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox"  ng-click="$ctrl.selectTag('water_sanitation')">Water / Sanitation
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" ng-click="$ctrl.selectTag('education')">Education
+            </label>
+            <label class="checkbox-inline">
+              <input type="checkbox" ng-click="$ctrl.selectTag('rural_development')">Rural Development
+            </label>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="previewStory.html">
+    <div class="modal-body" id="modal-body">
+      <div class="timeline" pesacheck-timeline story="{{$ctrl.id}}">
+        <section class="content" ng-include="layout">
+
+        </section>
+        <section class="loader" pesacheck-slide-loader timeout="{{timeout}}" slide="{{position}}">
+          <div class="loading" ng-style="{width: loadingScale}"></div>
+        </section>
+      </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+    </div>
+</script>

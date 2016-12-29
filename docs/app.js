@@ -1,7 +1,9 @@
 var pesacheck = angular.module("PesaCheck", [
   'ui.router',
   'ui.bootstrap',
-  'ngAnimate'
+  'ngAnimate',
+  'angular-uuid',
+  'firebase'
 ]);
 
 pesacheck.config(function($stateProvider, $locationProvider){
@@ -22,7 +24,25 @@ pesacheck.config(function($stateProvider, $locationProvider){
 
     .state("embedded", {
       templateUrl: "tpls/embedded.html",
-      url: "/"
+      url: "/embed/:id",
+      controller: "embeddedCtrl",
+      controllerAs: 'Embedded'
+    })
+
+    .state("stories", {
+      parent: "admin",
+      templateUrl: "tpls/stories.html",
+      url: "/stories",
+      controller: "pesacheckStoriesCtrl",
+      controllerAs: 'Stories'
+    })
+
+    .state("edit-story", {
+      parent: "admin",
+      templateUrl: "tpls/edit-story.html",
+      url: "/story/edit/:id",
+      controller: "editStoryCtrl",
+      controllerAs: 'Story'
     })
 
   // use the HTML5 History API
@@ -30,6 +50,9 @@ pesacheck.config(function($stateProvider, $locationProvider){
 });
 
 
+// define constants
+pesacheck.constant('_',window._);
+
 pesacheck.run(function($state){
-  $state.transitionTo('embedded');
+  $state.transitionTo('stories');
 });

@@ -1,0 +1,84 @@
+<div class="container story">
+  <div class="row">
+    <span class="page-title">Edit Story</span>
+    <div class="btn-group pull-right" role="group" aria-label="stories buttons">
+      <button type="button" class="btn btn-new" ng-click="Story.update()">Update</button>
+    </div>
+  </div>
+  <div class="row page-container">
+    <ol class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a ui-sref="stories">Stories</a></li>
+      <li class="active"><a href="#">{{Story.data.name}}</a></li>
+    </ol>
+    <form novalidate>
+      <uib-tabset active="0" >
+        <uib-tab index="0" heading="Introduction">
+          <div class="form-group">
+            <label for="introHeadline">Headline</label>
+            <input type="text" class="form-control" id="introHeadline" ng-model="Story.data.headline">
+          </div>
+          <div class="form-group">
+            <label for="introImage">Image URL</label>
+            <input type="url" class="form-control" id="introImage" ng-model="Story.data.headlineImage">
+          </div>
+          <div class="form-group">
+            <label for="introDuration">Duration of slide (in seconds)</label>
+            <input type="number" class="form-control" id="introDuration" ng-model="Story.data.introDuration" ng-min="5">
+          </div>
+        </uib-tab>
+        <uib-tab index="1" heading="Meter">
+          <div class="form-group">
+            <label for="meterQuestion">Question</label>
+            <input type="text" class="form-control" id="meterQuestion" ng-model="Story.data.meterQuestion">
+          </div>
+          <div class="form-group">
+            <label for="meterVerdict">Verdict</label>
+            <div class="checkbox">
+              <label class="radio-inline">
+                <input type="radio" ng-model="Story.data.meterVerdict" value="false">False
+              </label>
+              <label class="radio-inline">
+                <input type="radio" ng-model="Story.data.meterVerdict" value="partlytrue">Partly True
+              </label>
+              <label class="radio-inline">
+                <input type="radio" ng-model="Story.data.meterVerdict" value="plausible">Plausible
+              </label>
+              <label class="radio-inline">
+                <input type="radio" ng-model="Story.data.meterVerdict" value="true">True
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="MeterDuration">Duration of slide (in seconds)</label>
+            <input type="number" class="form-control" id="meterDuration" ng-model="Story.data.meterDuration" ng-min="5">
+          </div>
+        </uib-tab>
+        <uib-tab index="2" heading="Explanation">
+          <div class="form-group">
+            <label for="ExplanationDuration">Duration of slide (in seconds)</label>
+            <input type="number" class="form-control" id="ExplanationDuration" ng-model="Story.data.explanationDuration" ng-min="5">
+          </div>
+        </uib-tab>
+        <uib-tab index="3" heading="Findings">
+          <div class="form-group">
+            <label for="FindingsDuration">Duration of slide (in seconds)</label>
+            <input type="number" class="form-control" id="FindingsDuration" ng-model="Story.data.findingsDuration" ng-min="5">
+          </div>
+        </uib-tab>
+        <uib-tab index="4" heading="Source">
+          <div class="form-group">
+            <label for="meterQuestion">Add a source for this fact check</label>
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Source">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Add</button>
+              </span>
+            </div>
+          </div>
+        </uib-tab>
+      </uib-tabset>
+    </form>
+    <div class="col-sm-9"></div>
+  </div>
+</div>

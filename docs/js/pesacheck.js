@@ -1,3 +1,164 @@
+pesacheck.controller("embeddedCtrl", [
+  "$stateParams",
+  function($stateParams){
+    var self = this;
+
+    angular.extend(self, {
+      id: $stateParams.id
+    });
+  }
+]);
+
+pesacheck.controller("pesacheckStoriesCtrl", [
+  "$scope","$uibModal","$state","$Story",
+  function($scope, $uibModal, $state, $Story){
+    var self = this;
+
+
+    $scope.stories = $Story.fetchAll();
+    // this waits for the data to load and then logs the output. Therefore,
+    // data from the server will now appear in the logged output. Use this with care!
+    $scope.stories.$loaded()
+      .then(function() {
+        console.log($scope.stories);
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+
+
+    function createStory(size, position){
+      var modalInstance = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'createStory.html',
+        controller: 'createStoryCtrl',
+        controllerAs: '$ctrl',
+        size: 'lg',
+        resolve: {
+
+        }
+      });
+
+      modalInstance.result.then(function (createdStory) {
+        self.story = createdStory;
+        $state.transitionTo("edit-story", {id: createdStory});
+      }, function () {
+        console.log('Modal dismissed at: ' + new Date());
+      });
+    }
+
+    function previewStory(id){
+      var modalInstance = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'previewStory.html',
+        controller: 'previewStoryCtrl',
+        controllerAs: '$ctrl',
+        size: 'lg',
+        resolve: {
+          id: function () {
+            return id;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+
+      }, function () {
+        console.log('Modal dismissed at: ' + new Date());
+      });
+    }
+
+
+    angular.extend(self, {
+      newStory: createStory,
+      preview: previewStory
+    })
+  }
+]);
+
+pesacheck.controller("createStoryCtrl", [
+  "$uibModalInstance","_","uuid","$Story",
+  function($uibModalInstance, _, uuid, $Story){
+    var self = this;
+
+    angular.extend(self, {
+      story: {
+        name: "",
+        tags: [],
+        createdOn: firebase.database.ServerValue.TIMESTAMP,
+        published: false
+      },
+      ok: function () {
+        $Story.save(self.story).then(
+          function(ref){
+            var id = ref.key;
+            console.log("added new story with id " + id);
+            $uibModalInstance.close(id);
+          }
+        );
+
+      },
+      cancel: function () {
+        $uibModalInstance.dismiss('cancel');
+      },
+      selectTag: function(tag){
+        if(_.contains(self.story.tags, tag)){
+          self.story.tags = _.without(self.story.tags, tag);
+        }else{
+          self.story.tags.push(tag);
+        }
+      }
+
+    });
+  }
+]);
+
+
+pesacheck.controller("previewStoryCtrl", [
+  "$uibModalInstance","id",
+  function($uibModalInstance, id){
+    var self = this;
+
+    angular.extend(self, {
+      id: id,
+      ok: function () {
+        $uibModalInstance.dismiss('ok');
+      },
+      cancel: function () {
+        $uibModalInstance.dismiss('cancel');
+      }
+
+    });
+  }
+]);
+
+
+pesacheck.controller("editStoryCtrl", [
+  "$stateParams", "$Story",
+  function($stateParams, $Story){
+    var self = this;
+
+    angular.extend(self,{
+      data: $Story.get($stateParams.id),
+      update: function(){
+        self.data.$save().then(
+          function(ref){
+            console.log(ref.key === self.data.$id);
+            console.log(self.data)
+            alert("Story updated successfully")
+          }
+        )
+      }
+    });
+
+    console.log(self.data)
+  }
+])
+
 pesacheck.directive("pesacheckCharts", [
   function(){
     return {
@@ -128,103 +289,6 @@ pesacheck.controller("pesacheckChartsCtrl",[
   }
 ])
 
-
-pesacheck.controller("pesacheckStoriesCtrl", [
-  "$scope","$uibModal","$state",
-  function($scope, $uibModal, $state){
-    var self = this;
-    var stories = [
-      {
-        name: "Mr. Raila Odinga Warns on Eurobond Issues",
-        createdOn: "1 days ago",
-        published: false,
-        id: "b16317b0-583e-4391-bb86-9a7c5314a25d"
-      },
-      {
-        name: "Bomet's MCA talks about delays on payment for the elderly",
-        createdOn: "3 days ago",
-        published: true,
-        id: "d9a6b3cb-271c-4c93-9591-10d275ccfb50"
-      }
-    ];
-
-
-    function createStory(size, position){
-      var modalInstance = $uibModal.open({
-        animation: true,
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
-        templateUrl: 'createStory.html',
-        controller: 'createStoryCtrl',
-        controllerAs: '$ctrl',
-        size: 'lg',
-        resolve: {
-
-        }
-      });
-
-      modalInstance.result.then(function (createdStory) {
-        self.story = createdStory;
-        $state.transitionTo("edit-story");
-      }, function () {
-        console.log('Modal dismissed at: ' + new Date());
-      });
-    }
-
-
-    angular.extend(self, {
-      log: stories,
-      newStory: createStory
-    })
-  }
-]);
-
-pesacheck.controller("createStoryCtrl", [
-  "$uibModalInstance","_","uuid",
-  function($uibModalInstance, _, uuid){
-    var self = this;
-
-    angular.extend(self, {
-      story: {
-        id: uuid.v4(),
-        name: "",
-        tags: [],
-        createdOn: new Date(),
-        published: false
-      },
-      ok: function () {
-        $uibModalInstance.close(self.story);
-      },
-      cancel: function () {
-        $uibModalInstance.dismiss('cancel');
-      },
-      selectTag: function(tag){
-        if(_.contains(self.story.tags, tag)){
-          self.story.tags = _.without(self.story.tags, tag);
-        }else{
-          self.story.tags.push(tag);
-        }
-      }
-
-    });
-
-    function createStory(){
-
-    }
-  }
-]);
-
-
-pesacheck.controller("editStoryCtrl", [
-  function(){
-    var self = this;
-
-    angular.extend(self,{
-
-    });
-  }
-])
-
 pesacheck.directive("pesacheckCounter", [
   function(){
     return {
@@ -236,7 +300,7 @@ pesacheck.directive("pesacheckCounter", [
             $(this).prop('Counter',0).animate({
                 Counter: $(this).text()
             }, {
-                duration: 2000,
+                duration: 1000,
                 easing: 'swing',
                 step: function (now) {
                     $(this).text(Math.ceil(now));
@@ -302,8 +366,9 @@ pesacheck.directive("pesacheckMeter", [
       replace: false,
       templateUrl: "./tpls/meter.html",
       link: function(scope, element, attrs, controller, transcludeFn){
-
-        
+        var meter_needle =  document.querySelector(".pointer-false");
+        /*meter_needle.style.transform = "rotate(" +
+        (300 + ((20 * 180) / 100)) + "deg)";*/
       }
     }
   }
@@ -366,12 +431,50 @@ pesacheck.controller("PesaCheckSliderCtrl",[
 ])
 
 pesacheck.directive("pesacheckTimeline", [
-  "$timeout","$animate",
-  function($timeout, $animate){
+  "$timeout","$animate","$stateParams", "$Story",
+  function($timeout, $animate, $stateParams, $Story){
     return {
       restrict: "A",
       replace: false,
       link: function(scope, element, attrs, controller, transcludeFn){
+        scope.layout= "loading-layout.html";
+
+        var story;
+        scope.$watch(
+          function(){
+            return attrs['story']
+          },
+          function(newVal, oldVal){
+            story = $Story.get(newVal);
+            console.log(newVal)
+
+            story.$loaded(
+              function(data) {
+                console.log(data)
+                // slide 1
+                slides[0].data.imageUri = data.headlineImage;
+                slides[0].data.headline = data.headline;
+                slides[0].timeout = data.introDuration;
+                // slide 2
+                slides[1].timeout = data.explanationDuration;
+                // Slide 3
+                slides[2].data.question = data.meterQuestion;
+                slides[2].timeout = data.meterDuration;
+                // slide 4
+                slides[3].timeout = data.findingsDuration;
+                // Slide 5
+                slides[4].data.question = data.meterQuestion;
+                slides[4].data.verdict = translateVerdict(data.meterVerdict);
+
+                changeContext();
+                changeSlide();
+              },
+              function(error) {
+                console.error("Error:", error);
+              }
+            );
+          }
+        );
         var slides = [
           {
             name: "slide1",
@@ -461,7 +564,20 @@ pesacheck.directive("pesacheckTimeline", [
           }
         ];
 
+
         var count = 0;
+
+        function translateVerdict(verdict){
+          if(verdict == 'false'){
+            return 0;
+          }else if(verdict == 'partlytrue'){
+            return 1;
+          }else if(verdict == 'plausible'){
+            return 2;
+          }else if(verdict == 'true'){
+            return 3;
+          }
+        }
 
         function changeContext () {
           scope.layout= slides[count].layout + "-layout.html";
@@ -481,8 +597,7 @@ pesacheck.directive("pesacheckTimeline", [
           }, slides[count].timeout * 1000);
         }
 
-        changeContext();
-        changeSlide();
+
 
         $animate.on('enter', element,
            function callback(el, phase) {
@@ -517,3 +632,35 @@ pesacheck.directive("bgImage", [
     }
   }
 ]);
+
+pesacheck.factory("$Story", [
+  "$firebaseObject","$firebaseArray",
+  function($firebaseObject, $firebaseArray){
+    var self = this;
+    var stories = []
+    angular.extend(self, {
+      save: function(story){
+        if(typeof(story) != "object"){
+          console.log("illegal save. cancelled request")
+          return
+        }
+        return self.fetchAll().$add(story)
+      },
+      fetchAll: function(){
+        if(stories.length < 1){
+          var ref = firebase.database().ref();
+          stories = $firebaseArray(ref.child('pesacheck').child('stories'));
+        }
+        return stories;
+      },
+      get: function(id){
+        if(id == null){ return null;}
+        var ref = firebase.database().ref().child('pesacheck').child('stories').child(id);
+
+        return $firebaseObject(ref);
+      }
+    });
+
+    return self;
+  }
+])

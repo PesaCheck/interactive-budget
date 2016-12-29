@@ -19,11 +19,16 @@
           <th>Published</th>
           <th></th>
         </tr>
-        <tr ng-repeat="story in Stories.log">
+        <tr ng-repeat="story in stories">
           <td>{{story.name}}</td>
           <td>{{story.createdOn}}</td>
           <td>{{story.published}}</td>
-          <td></td>
+          <td>
+            <div class="btn-group pull-right" role="group" aria-label="stories buttons">
+              <button type="button" class="btn btn-edit" ui-sref="edit-story({ id: story.$id})">Edit</button>
+              <button type="button" class="btn btn-preview" ng-click="Stories.preview(story.$id)">Preview</button>
+            </div>
+          </td>
         </tr>
       </table>
     </div>
@@ -58,6 +63,26 @@
           </div>
         </div>
       </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>
+        <button class="btn btn-warning" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+    </div>
+</script>
+
+<script type="text/ng-template" id="previewStory.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Preview</h3>
+    </div>
+    <div class="modal-body" id="modal-body">
+      <div class="timeline" pesacheck-timeline story="{{$ctrl.id}}">
+        <section class="content" ng-include="layout">
+
+        </section>
+        <section class="loader" pesacheck-slide-loader timeout="{{timeout}}" slide="{{position}}">
+          <div class="loading" ng-style="{width: loadingScale}"></div>
+        </section>
+      </div>
     </div>
     <div class="modal-footer">
         <button class="btn btn-primary" type="button" ng-click="$ctrl.ok()">OK</button>

@@ -24,7 +24,8 @@ var deps = {
     PATHS.node + "jquery/dist/jquery.js",
     PATHS.node + "angular-animate/angular-animate.js",
     PATHS.node + "underscore/underscore.js",
-    PATHS.node + "angular-uuid/angular-uuid.js"
+    PATHS.node + "angular-uuid/angular-uuid.js",
+    PATHS.node + "angularfire/dist/angularfire.js"
   ],
   css: [
     PATHS.node + "bootstrap/dist/css/bootstrap.css",

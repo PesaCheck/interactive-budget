@@ -2,7 +2,8 @@ var pesacheck = angular.module("PesaCheck", [
   'ui.router',
   'ui.bootstrap',
   'ngAnimate',
-  'angular-uuid'
+  'angular-uuid',
+  'firebase'
 ]);
 
 pesacheck.config(function($stateProvider, $locationProvider){
@@ -23,7 +24,9 @@ pesacheck.config(function($stateProvider, $locationProvider){
 
     .state("embedded", {
       templateUrl: "tpls/embedded.html",
-      url: "/embedded"
+      url: "/embed/:id",
+      controller: "embeddedCtrl",
+      controllerAs: 'Embedded'
     })
 
     .state("stories", {
@@ -37,7 +40,7 @@ pesacheck.config(function($stateProvider, $locationProvider){
     .state("edit-story", {
       parent: "admin",
       templateUrl: "tpls/edit-story.html",
-      url: "/story/edit",
+      url: "/story/edit/:id",
       controller: "editStoryCtrl",
       controllerAs: 'Story'
     })

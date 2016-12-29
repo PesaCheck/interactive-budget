@@ -1,10 +1,48 @@
 pesacheck.directive("pesacheckTimeline", [
-  "$timeout","$animate",
-  function($timeout, $animate){
+  "$timeout","$animate","$stateParams", "$Story",
+  function($timeout, $animate, $stateParams, $Story){
     return {
       restrict: "A",
       replace: false,
       link: function(scope, element, attrs, controller, transcludeFn){
+        scope.layout= "loading-layout.html";
+
+        var story;
+        scope.$watch(
+          function(){
+            return attrs['story']
+          },
+          function(newVal, oldVal){
+            story = $Story.get(newVal);
+            console.log(newVal)
+
+            story.$loaded(
+              function(data) {
+                console.log(data)
+                // slide 1
+                slides[0].data.imageUri = data.headlineImage;
+                slides[0].data.headline = data.headline;
+                slides[0].timeout = data.introDuration;
+                // slide 2
+                slides[1].timeout = data.explanationDuration;
+                // Slide 3
+                slides[2].data.question = data.meterQuestion;
+                slides[2].timeout = data.meterDuration;
+                // slide 4
+                slides[3].timeout = data.findingsDuration;
+                // Slide 5
+                slides[4].data.question = data.meterQuestion;
+                slides[4].data.verdict = translateVerdict(data.meterVerdict);
+
+                changeContext();
+                changeSlide();
+              },
+              function(error) {
+                console.error("Error:", error);
+              }
+            );
+          }
+        );
         var slides = [
           {
             name: "slide1",
@@ -94,7 +132,20 @@ pesacheck.directive("pesacheckTimeline", [
           }
         ];
 
+
         var count = 0;
+
+        function translateVerdict(verdict){
+          if(verdict == 'false'){
+            return 0;
+          }else if(verdict == 'partlytrue'){
+            return 1;
+          }else if(verdict == 'plausible'){
+            return 2;
+          }else if(verdict == 'true'){
+            return 3;
+          }
+        }
 
         function changeContext () {
           scope.layout= slides[count].layout + "-layout.html";
@@ -114,8 +165,7 @@ pesacheck.directive("pesacheckTimeline", [
           }, slides[count].timeout * 1000);
         }
 
-        changeContext();
-        changeSlide();
+
 
         $animate.on('enter', element,
            function callback(el, phase) {

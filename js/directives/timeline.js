@@ -17,21 +17,31 @@ pesacheck.directive("pesacheckTimeline", [
 
             story.$loaded(
               function(data) {
-                console.log(data)
                 // slide 1
                 slides[0].data.imageUri = data.headlineImage;
                 slides[0].data.headline = data.headline;
                 slides[0].timeout = data.introDuration;
                 // slide 2
                 slides[1].timeout = data.explanationDuration;
+                slides[1].data.stats = data.explanations;
+                slides[1].data.title = data.explanationTitle;
+
                 // Slide 3
                 slides[2].data.question = data.meterQuestion;
                 slides[2].timeout = data.meterDuration;
                 // slide 4
                 slides[3].timeout = data.findingsDuration;
+                slides[3].data.stats = data.findings;
+                slides[3].data.title = data.FindingsTitle;
                 // Slide 5
                 slides[4].data.question = data.meterQuestion;
                 slides[4].data.verdict = translateVerdict(data.meterVerdict);
+
+                angular.forEach(data.findings, function(value, key){
+                  console.log(key)
+                  console.log(value)
+
+                })
 
                 changeContext();
                 changeSlide();
@@ -60,7 +70,7 @@ pesacheck.directive("pesacheckTimeline", [
             position: 2,
             layout: "numbers",
             data: {
-              title: "Mr. Raila Odinga claims that the Eurobond funds were not fully deposited into the Consolidated Fund",
+              title: "",
               stats: [
                 /*{
                   heading: "Eurobond's Net Proceeds",
@@ -68,7 +78,7 @@ pesacheck.directive("pesacheckTimeline", [
                   figure: "173.9",
                   figureMeta: "Billion Kenya Shillings"
                 },*/
-                {
+                /*{
                   heading: "Eurobond issue",
                   description: "Funds that were deposited in the Consolidated Fund",
                   figure: "39.5",
@@ -79,7 +89,7 @@ pesacheck.directive("pesacheckTimeline", [
                   description: "proceeds that were deposited in the Consolidated Fund",
                   figure: "81.5",
                   figureMeta: "Billion Kenya Shillings"
-                }
+                }*/
               ]
             },
             timeout: 5

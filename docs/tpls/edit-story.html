@@ -181,12 +181,7 @@
         <uib-tab index="4" heading="Source">
           <div class="form-group">
             <label for="meterQuestion">Add a source for this fact check</label>
-            <div class="input-group">
-              <input type="text" class="form-control" placeholder="Source">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Add</button>
-              </span>
-            </div>
+            <input type="text" class="form-control" ng-model="Story.data.source">
           </div>
         </uib-tab>
       </uib-tabset>
@@ -194,7 +189,3 @@
     <div class="col-sm-9"></div>
   </div>
 </div>
-
-<script type="text/ng-template" id="add-numbers-stats.html">
-
-</script>

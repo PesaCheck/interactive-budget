@@ -1,11 +1,11 @@
-<div class="timeline" pesacheck-timeline story="{{Embedded.id}}">
+<pesacheck-meter></pesacheck-meter>
+<!-- <div class="timeline" pesacheck-timeline story="{{Embedded.id}}">
   <section class="content" ng-include="layout">
-
   </section>
   <section class="loader" pesacheck-slide-loader timeout="{{timeout}}" slide="{{position}}">
     <div class="loading" ng-style="{width: loadingScale}"></div>
   </section>
-</div>
+</div> -->
 
 <script type="text/ng-template" id="pesacheck-meter-layout.html">
   <div class="slide pesacheck-meter">
@@ -80,7 +80,7 @@
   <div class="row slide numbers story">
     <p class="title">{{data.title}}</p>
     <twitter-widget twitter-widget-id="data.tweet"
-            twitter-widget-options="{'cards': 'hidden', 'align': 'center'}">
+        twitter-widget-options="{'cards': 'hidden', 'align': 'center'}">
     </twitter-widget>
   </div>
 </script>

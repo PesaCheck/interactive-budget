@@ -262,60 +262,46 @@
     opacity: 1; }
 
 @-webkit-keyframes METER {
-  12% {
-    -webkit-transform: rotate(45deg); }
-  25% {
-    -webkit-transform: rotate(45deg); }
-  37% {
-    -webkit-transform: rotate(45deg); }
-  50% {
-    -webkit-transform: rotate(45deg); }
-  62% {
-    -webkit-transform: rotate(45deg); }
-  75% {
-    -webkit-transform: rotate(45deg); }
-  87% {
-    -webkit-transform: rotate(45deg); }
+  17% {
+    transform: rotate(45deg); }
+  34% {
+    transform: rotate(90deg); }
+  51% {
+    transform: rotate(135deg); }
+  68% {
+    transform: rotate(90deg); }
+  85% {
+    transform: rotate(45deg); }
   100% {
-    -webkit-transform: rotate(45deg); }
-  100% {
-    -webkit-transform: rotate(45deg); } }
+    transform: rotate(0deg); } }
 
 @-moz-keyframes METER {
-  12% {
-    -moz-transform: rotate(45deg); }
-  25% {
-    -moz-transform: rotate(45deg); }
-  37% {
-    -moz-transform: rotate(45deg); }
-  50% {
-    -moz-transform: rotate(45deg); }
-  62% {
-    -moz-transform: rotate(45deg); }
-  75% {
-    -moz-transform: rotate(45deg); }
-  87% {
-    -moz-transform: rotate(45deg); }
+  17% {
+    transform: rotate(45deg); }
+  34% {
+    transform: rotate(90deg); }
+  51% {
+    transform: rotate(135deg); }
+  68% {
+    transform: rotate(90deg); }
+  85% {
+    transform: rotate(45deg); }
   100% {
-    -moz-transform: rotate(45deg); } }
+    transform: rotate(0deg); } }
 
 @-o-keyframes METER {
-  12% {
-    -o-transform: rotate(45deg); }
-  25% {
-    -o-transform: rotate(45deg); }
-  37% {
-    -o-transform: rotate(45deg); }
-  50% {
-    -o-transform: rotate(45deg); }
-  62% {
-    -o-transform: rotate(45deg); }
-  75% {
-    -o-transform: rotate(45deg); }
-  87% {
-    -o-transform: rotate(45deg); }
+  17% {
+    transform: rotate(45deg); }
+  34% {
+    transform: rotate(90deg); }
+  51% {
+    transform: rotate(135deg); }
+  68% {
+    transform: rotate(90deg); }
+  85% {
+    transform: rotate(45deg); }
   100% {
-    -o-transform: rotate(45deg); } }
+    transform: rotate(0deg); } }
 
 @keyframes METER {
   17% {

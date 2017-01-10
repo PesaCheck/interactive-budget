@@ -89,6 +89,8 @@
     -moz-animation:    METER 1s infinite; /* Fx 5+ */
     -o-animation:      METER 1s infinite; /* Opera 12+ */
     animation:         METER 1s infinite; /* IE 10+, Fx 29+ */
-    transform-origin: bottom center;
+    //transform-origin: 73% 70%;
+    transform-origin: 73% 57%;
+    background: #000;
   }
 }

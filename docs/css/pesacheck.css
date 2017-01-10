@@ -326,7 +326,8 @@
   /* Opera 12+ */
   animation: METER 1s infinite;
   /* IE 10+, Fx 29+ */
-  transform-origin: bottom center; }
+  transform-origin: 73% 57%;
+  background: #000; }
 
 .logo {
   width: 140px;

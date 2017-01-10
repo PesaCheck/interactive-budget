@@ -1,11 +1,10 @@
-<pesacheck-meter></pesacheck-meter>
-<!-- <div class="timeline" pesacheck-timeline story="{{Embedded.id}}">
+<div class="timeline" pesacheck-timeline story="{{Embedded.id}}">
   <section class="content" ng-include="layout">
   </section>
   <section class="loader" pesacheck-slide-loader timeout="{{timeout}}" slide="{{position}}">
     <div class="loading" ng-style="{width: loadingScale}"></div>
   </section>
-</div> -->
+</div>
 
 <script type="text/ng-template" id="pesacheck-meter-layout.html">
   <div class="slide pesacheck-meter">
@@ -15,7 +14,7 @@
       <img src="./images/pesacheck-meter-partly-true.svg" ng-switch-when="1" alt="Pesacheck truth meter" class="truthmeter animated zoomIn">
       <img src="./images/pesacheck-meter-plausible.svg" ng-switch-when="2" alt="Pesacheck truth meter" class="truthmeter animated zoomIn">
       <img src="./images/pesacheck-meter-true.svg" ng-switch-when="3" alt="Pesacheck truth meter" class="truthmeter animated zoomIn">
-      <img src="./images/pesacheck-meter-blank.svg" ng-switch-default alt="Pesacheck truth meter" class="truthmeter animated zoomIn">
+      <pesacheck-meter ng-switch-default class="truthmeter animated zoomIn"></pesacheck-meter>
     <span>
     <div class="readings">
       <ul class="meter-readings">

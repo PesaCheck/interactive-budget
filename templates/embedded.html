@@ -77,11 +77,10 @@
 </script>
 
 <script type="text/ng-template" id="tweet-layout.html">
-  <div class="row">
-    <a href="{{data.imageUri}}">
-      <img ng-src="data.imageUri" >
-    </a>
-
+  <div class="row slide numbers story">
+    <p class="title">{{data.title}}</p>
+    <twitter-widget twitter-widget-id="data.tweet"
+            twitter-widget-options="{'cards': 'hidden', 'align': 'center'}">
+    </twitter-widget>
   </div>
-  <span>loading</span>
 </script>

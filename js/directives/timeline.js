@@ -25,6 +25,9 @@ pesacheck.directive("pesacheckTimeline", [
                 slides[1].timeout = data.explanationDuration;
                 slides[1].data.stats = data.explanations;
                 slides[1].data.title = data.explanationTitle;
+                slides[1].layout = data.ExplanationLayout;
+                slides[1].data.tweet = data.ExplanationTweet;
+
 
                 // Slide 3
                 slides[2].data.question = data.meterQuestion;

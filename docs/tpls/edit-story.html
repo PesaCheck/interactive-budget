@@ -118,20 +118,33 @@
         </uib-tab>
         <uib-tab index="3" heading="Findings">
           <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-6">
               <div class="form-group">
                 <label for="FindingsTitle">Title</label>
                 <input type="text" class="form-control" id="FindingsTitle" ng-model="Story.data.FindingsTitle">
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               <div class="form-group">
                 <label for="FindingsDuration">Duration of slide (in seconds)</label>
                 <input type="number" class="form-control" id="FindingsDuration" ng-model="Story.data.findingsDuration" ng-min="5">
               </div>
             </div>
+            <div class="col-sm-3">
+              <div class="form-group">
+                <label for="FindingsLayout">Select the most suitable layout</label>
+                <div class="checkbox">
+                  <label class="radio-inline">
+                    <input type="radio" ng-model="Story.data.findingsLayout" value="numbers">Numbers
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" ng-model="Story.data.findingsLayout" value="chart">Chart
+                  </label>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="row">
+          <div class="row" ng-show="Story.data.findingsLayout == 'numbers'">
             <div class="col-sm-6">
               <div class="form-group">
                 <label for="ExplanationHeading">Heading</label>
@@ -158,7 +171,7 @@
             </div>
             <button class="btn btn-default" type="button" ng-click="Story.addFinding(Story.finding)">Add Stat</button>
           </div>
-          <div class="row">
+          <div class="row" ng-show="Story.data.findingsLayout == 'numbers'">
             <span ng-show="Story.data.findings.length == 0">Stats not added yet</span>
             <table class="table table-striped table-hover" ng-show="Story.data.findings.length > 0">
               <tr>
@@ -176,6 +189,14 @@
                 <td></td>
               </tr>
             </table>
+          </div>
+          <div class="row" ng-show="Story.data.findingsLayout == 'chart'">
+            <div class="col-sm-12">
+              <div class="form-group">
+                <label for="FindingsChart">Enter Url for your chart</label>
+                <input type="text" class="form-control" id="FindingsChart" ng-model="Story.data.findingsChart" >
+              </div>
+            </div>
           </div>
         </uib-tab>
         <uib-tab index="4" heading="Source">

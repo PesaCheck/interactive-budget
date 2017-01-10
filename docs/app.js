@@ -3,7 +3,8 @@ var pesacheck = angular.module("PesaCheck", [
   'ui.bootstrap',
   'ngAnimate',
   'angular-uuid',
-  'firebase'
+  'firebase',
+  'ngtweet'
 ]);
 
 pesacheck.config(function($stateProvider, $locationProvider){

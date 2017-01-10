@@ -1,32 +1,175 @@
-pesacheck.factory("$Story", [
-  "$firebaseObject","$firebaseArray",
-  function($firebaseObject, $firebaseArray){
+pesacheck.controller("embeddedCtrl", [
+  "$stateParams",
+  function($stateParams){
     var self = this;
-    var stories = []
-    angular.extend(self, {
-      save: function(story){
-        if(typeof(story) != "object"){
-          console.log("illegal save. cancelled request")
-          return
-        }
-        return self.fetchAll().$add(story)
-      },
-      fetchAll: function(){
-        if(stories.length < 1){
-          var ref = firebase.database().ref();
-          stories = $firebaseArray(ref.child('pesacheck').child('stories'));
-        }
-        return stories;
-      },
-      get: function(id){
-        if(id == null){ return null;}
-        var ref = firebase.database().ref().child('pesacheck').child('stories').child(id);
 
-        return $firebaseObject(ref);
+    angular.extend(self, {
+      id: $stateParams.id
+    });
+  }
+]);
+
+pesacheck.controller("pesacheckStoriesCtrl", [
+  "$scope","$uibModal","$state","$Story",
+  function($scope, $uibModal, $state, $Story){
+    var self = this;
+
+
+    $scope.stories = $Story.fetchAll();
+    // this waits for the data to load and then logs the output. Therefore,
+    // data from the server will now appear in the logged output. Use this with care!
+    $scope.stories.$loaded()
+      .then(function() {
+        console.log($scope.stories);
+      })
+      .catch(function(err) {
+        console.error(err);
+      });
+
+
+    function createStory(size, position){
+      var modalInstance = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'createStory.html',
+        controller: 'createStoryCtrl',
+        controllerAs: '$ctrl',
+        size: 'lg',
+        resolve: {
+
+        }
+      });
+
+      modalInstance.result.then(function (createdStory) {
+        self.story = createdStory;
+        $state.transitionTo("edit-story", {id: createdStory});
+      }, function () {
+        console.log('Modal dismissed at: ' + new Date());
+      });
+    }
+
+    function previewStory(id){
+      var modalInstance = $uibModal.open({
+        animation: true,
+        ariaLabelledBy: 'modal-title',
+        ariaDescribedBy: 'modal-body',
+        templateUrl: 'previewStory.html',
+        controller: 'previewStoryCtrl',
+        controllerAs: '$ctrl',
+        size: 'lg',
+        resolve: {
+          id: function () {
+            return id;
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+
+      }, function () {
+        console.log('Modal dismissed at: ' + new Date());
+      });
+    }
+
+
+    angular.extend(self, {
+      newStory: createStory,
+      preview: previewStory
+    })
+  }
+]);
+
+pesacheck.controller("createStoryCtrl", [
+  "$uibModalInstance","_","uuid","$Story",
+  function($uibModalInstance, _, uuid, $Story){
+    var self = this;
+
+    angular.extend(self, {
+      story: {
+        name: "",
+        tags: [],
+        createdOn: firebase.database.ServerValue.TIMESTAMP,
+        published: false
+      },
+      ok: function () {
+        $Story.save(self.story).then(
+          function(ref){
+            var id = ref.key;
+            console.log("added new story with id " + id);
+            $uibModalInstance.close(id);
+          }
+        );
+
+      },
+      cancel: function () {
+        $uibModalInstance.dismiss('cancel');
+      },
+      selectTag: function(tag){
+        if(_.contains(self.story.tags, tag)){
+          self.story.tags = _.without(self.story.tags, tag);
+        }else{
+          self.story.tags.push(tag);
+        }
+      }
+
+    });
+  }
+]);
+
+pesacheck.controller("previewStoryCtrl", [
+  "$uibModalInstance","id",
+  function($uibModalInstance, id){
+    var self = this;
+    console.log(id)
+    angular.extend(self, {
+      id: id,
+      ok: function () {
+        $uibModalInstance.dismiss('ok');
+      },
+      cancel: function () {
+        $uibModalInstance.dismiss('cancel');
+      }
+
+    });
+  }
+]);
+
+pesacheck.controller("editStoryCtrl", [
+  "$stateParams", "$Story",
+  function($stateParams, $Story){
+    var self = this;
+
+    angular.extend(self,{
+      data: $Story.get($stateParams.id),
+      update: function(){
+        self.data.$save().then(
+          function(ref){
+            console.log(ref.key === self.data.$id);
+            console.log(self.data)
+            alert("Story updated successfully")
+          }
+        )
+      },
+      addFinding: function(data){
+        if(typeof(data) == 'object'){
+          self.data.findings.push(data);
+        }
+      },
+      addExplanation: function(data){
+        if(typeof(data) == 'object'){
+          self.data.explanations.push(data);
+        }
       }
     });
 
-    return self;
+    if(self.data.explanations == undefined){
+      self.data.explanations = [];
+    }
+
+    if(self.data.findings == undefined){
+      self.data.findings = [];
+    }
   }
 ])
 
@@ -302,8 +445,8 @@ pesacheck.controller("PesaCheckSliderCtrl",[
 ])
 
 pesacheck.directive("pesacheckTimeline", [
-  "$timeout","$animate","$stateParams", "$Story",
-  function($timeout, $animate, $stateParams, $Story){
+  "$timeout","$animate","$stateParams", "$Story","$sce",
+  function($timeout, $animate, $stateParams, $Story, $sce){
     return {
       restrict: "A",
       replace: false,
@@ -320,21 +463,31 @@ pesacheck.directive("pesacheckTimeline", [
 
             story.$loaded(
               function(data) {
-                console.log(data)
                 // slide 1
                 slides[0].data.imageUri = data.headlineImage;
                 slides[0].data.headline = data.headline;
                 slides[0].timeout = data.introDuration;
                 // slide 2
                 slides[1].timeout = data.explanationDuration;
+                slides[1].data.stats = data.explanations;
+                slides[1].data.title = data.explanationTitle;
+                slides[1].layout = data.ExplanationLayout;
+                slides[1].data.tweet = data.ExplanationTweet;
+
+
                 // Slide 3
                 slides[2].data.question = data.meterQuestion;
                 slides[2].timeout = data.meterDuration;
                 // slide 4
                 slides[3].timeout = data.findingsDuration;
+                slides[3].layout = data.findingsLayout;
+                slides[3].data.stats = data.findings;
+                slides[3].data.title = data.FindingsTitle;
+                slides[3].data.chartUri = $sce.trustAsResourceUrl(data.findingsChart);
                 // Slide 5
                 slides[4].data.question = data.meterQuestion;
                 slides[4].data.verdict = translateVerdict(data.meterVerdict);
+
 
                 changeContext();
                 changeSlide();
@@ -363,27 +516,8 @@ pesacheck.directive("pesacheckTimeline", [
             position: 2,
             layout: "numbers",
             data: {
-              title: "Mr. Raila Odinga claims that the Eurobond funds were not fully deposited into the Consolidated Fund",
-              stats: [
-                /*{
-                  heading: "Eurobond's Net Proceeds",
-                  description: "Funds to be deposited in the Consolidated Fund",
-                  figure: "173.9",
-                  figureMeta: "Billion Kenya Shillings"
-                },*/
-                {
-                  heading: "Eurobond issue",
-                  description: "Funds that were deposited in the Consolidated Fund",
-                  figure: "39.5",
-                  figureMeta: "Billion Kenya Shillings"
-                },
-                {
-                  heading: "Tap Sales",
-                  description: "proceeds that were deposited in the Consolidated Fund",
-                  figure: "81.5",
-                  figureMeta: "Billion Kenya Shillings"
-                }
-              ]
+              title: "",
+              stats: []
             },
             timeout: 5
           },
@@ -393,7 +527,7 @@ pesacheck.directive("pesacheckTimeline", [
             position: 3,
             layout: "pesacheck-meter",
             data: {
-              question: "is Mr. Raila Odinga justified in warning investors off a potential second Eurobond Issue?"
+              question: ""
             },
             timeout: 5
           },
@@ -467,8 +601,6 @@ pesacheck.directive("pesacheckTimeline", [
           }, slides[count].timeout * 1000);
         }
 
-
-
         $animate.on('enter', element,
            function callback(el, phase) {
              $(element).addClass('animated fadeIn');
@@ -478,7 +610,6 @@ pesacheck.directive("pesacheckTimeline", [
         $animate.on('leave', element,
            function callback(el, phase) {
              $(el).addClass('animated fadeOutLeft');
-             // cool we detected an enter animation within the container
            }
         );
     }
@@ -503,163 +634,34 @@ pesacheck.directive("bgImage", [
   }
 ]);
 
-pesacheck.controller("embeddedCtrl", [
-  "$stateParams",
-  function($stateParams){
+pesacheck.factory("$Story", [
+  "$firebaseObject","$firebaseArray",
+  function($firebaseObject, $firebaseArray){
     var self = this;
-
+    var stories = []
     angular.extend(self, {
-      id: $stateParams.id
-    });
-  }
-]);
-
-pesacheck.controller("pesacheckStoriesCtrl", [
-  "$scope","$uibModal","$state","$Story",
-  function($scope, $uibModal, $state, $Story){
-    var self = this;
-
-
-    $scope.stories = $Story.fetchAll();
-    // this waits for the data to load and then logs the output. Therefore,
-    // data from the server will now appear in the logged output. Use this with care!
-    $scope.stories.$loaded()
-      .then(function() {
-        console.log($scope.stories);
-      })
-      .catch(function(err) {
-        console.error(err);
-      });
-
-
-    function createStory(size, position){
-      var modalInstance = $uibModal.open({
-        animation: true,
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
-        templateUrl: 'createStory.html',
-        controller: 'createStoryCtrl',
-        controllerAs: '$ctrl',
-        size: 'lg',
-        resolve: {
-
+      save: function(story){
+        if(typeof(story) != "object"){
+          console.log("illegal save. cancelled request")
+          return
         }
-      });
-
-      modalInstance.result.then(function (createdStory) {
-        self.story = createdStory;
-        $state.transitionTo("edit-story", {id: createdStory});
-      }, function () {
-        console.log('Modal dismissed at: ' + new Date());
-      });
-    }
-
-    function previewStory(id){
-      var modalInstance = $uibModal.open({
-        animation: true,
-        ariaLabelledBy: 'modal-title',
-        ariaDescribedBy: 'modal-body',
-        templateUrl: 'previewStory.html',
-        controller: 'previewStoryCtrl',
-        controllerAs: '$ctrl',
-        size: 'lg',
-        resolve: {
-          id: function () {
-            return id;
-          }
+        return self.fetchAll().$add(story)
+      },
+      fetchAll: function(){
+        if(stories.length < 1){
+          var ref = firebase.database().ref();
+          stories = $firebaseArray(ref.child('pesacheck').child('stories'));
         }
-      });
-
-      modalInstance.result.then(function () {
-
-      }, function () {
-        console.log('Modal dismissed at: ' + new Date());
-      });
-    }
-
-
-    angular.extend(self, {
-      newStory: createStory,
-      preview: previewStory
-    })
-  }
-]);
-
-pesacheck.controller("createStoryCtrl", [
-  "$uibModalInstance","_","uuid","$Story",
-  function($uibModalInstance, _, uuid, $Story){
-    var self = this;
-
-    angular.extend(self, {
-      story: {
-        name: "",
-        tags: [],
-        createdOn: firebase.database.ServerValue.TIMESTAMP,
-        published: false
+        return stories;
       },
-      ok: function () {
-        $Story.save(self.story).then(
-          function(ref){
-            var id = ref.key;
-            console.log("added new story with id " + id);
-            $uibModalInstance.close(id);
-          }
-        );
+      get: function(id){
+        if(id == null){ return null;}
+        var ref = firebase.database().ref().child('pesacheck').child('stories').child(id);
 
-      },
-      cancel: function () {
-        $uibModalInstance.dismiss('cancel');
-      },
-      selectTag: function(tag){
-        if(_.contains(self.story.tags, tag)){
-          self.story.tags = _.without(self.story.tags, tag);
-        }else{
-          self.story.tags.push(tag);
-        }
-      }
-
-    });
-  }
-]);
-
-
-pesacheck.controller("previewStoryCtrl", [
-  "$uibModalInstance","id",
-  function($uibModalInstance, id){
-    var self = this;
-    console.log(id)
-    angular.extend(self, {
-      id: id,
-      ok: function () {
-        $uibModalInstance.dismiss('ok');
-      },
-      cancel: function () {
-        $uibModalInstance.dismiss('cancel');
-      }
-
-    });
-  }
-]);
-
-
-pesacheck.controller("editStoryCtrl", [
-  "$stateParams", "$Story",
-  function($stateParams, $Story){
-    var self = this;
-
-    angular.extend(self,{
-      data: $Story.get($stateParams.id),
-      update: function(){
-        self.data.$save().then(
-          function(ref){
-            console.log(ref.key === self.data.$id);
-            console.log(self.data)
-            alert("Story updated successfully")
-          }
-        )
+        return $firebaseObject(ref);
       }
     });
 
-    console.log(self.data)
+    return self;
   }
 ])

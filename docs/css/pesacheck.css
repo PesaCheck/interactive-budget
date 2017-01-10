@@ -160,6 +160,18 @@
       padding: 32px; }
       .timeline .numbers .numbers-row .box {
         width: 40%; }
+  .timeline .charts {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: linear-gradient(to bottom, #2a74aa 0%, #2a74aa 50%, #fff 50%, #fff 100%); }
+    .timeline .charts .title {
+      text-transform: uppercase;
+      font-size: 24px;
+      color: #fff;
+      padding: 32px; }
+    .timeline .charts iframe {
+      min-height: 380px; }
   .timeline .image-headline {
     display: block;
     position: relative; }
@@ -248,6 +260,107 @@
     background: #4cae4e; }
   .meter-readings li.active .text {
     opacity: 1; }
+
+@-webkit-keyframes METER {
+  17% {
+    transform: rotate(45deg); }
+  34% {
+    transform: rotate(90deg); }
+  51% {
+    transform: rotate(135deg); }
+  68% {
+    transform: rotate(90deg); }
+  85% {
+    transform: rotate(45deg); }
+  100% {
+    transform: rotate(0deg); } }
+
+@-moz-keyframes METER {
+  17% {
+    transform: rotate(45deg); }
+  34% {
+    transform: rotate(90deg); }
+  51% {
+    transform: rotate(135deg); }
+  68% {
+    transform: rotate(90deg); }
+  85% {
+    transform: rotate(45deg); }
+  100% {
+    transform: rotate(0deg); } }
+
+@-o-keyframes METER {
+  17% {
+    transform: rotate(45deg); }
+  34% {
+    transform: rotate(90deg); }
+  51% {
+    transform: rotate(135deg); }
+  68% {
+    transform: rotate(90deg); }
+  85% {
+    transform: rotate(45deg); }
+  100% {
+    transform: rotate(0deg); } }
+
+@keyframes METER {
+  17% {
+    transform: rotate(45deg); }
+  34% {
+    transform: rotate(90deg); }
+  51% {
+    transform: rotate(135deg); }
+  68% {
+    transform: rotate(90deg); }
+  85% {
+    transform: rotate(45deg); }
+  100% {
+    transform: rotate(0deg); } }
+
+@-webkit-keyframes FALSE {
+  0% {
+    transform: rotate(-25deg); }
+  100% {
+    transform: rotate(25deg); } }
+
+@-moz-keyframes FALSE {
+  0% {
+    transform: rotate(-25deg); }
+  100% {
+    transform: rotate(25deg); } }
+
+@-o-keyframes FALSE {
+  0% {
+    transform: rotate(-25deg); }
+  100% {
+    transform: rotate(25deg); } }
+
+@keyframes FALSE {
+  0% {
+    transform: rotate(-25deg); }
+  100% {
+    transform: rotate(25deg); } }
+
+.meter .pointer {
+  -webkit-animation: METER 1s infinite;
+  /* Safari 4+ */
+  -moz-animation: METER 1s infinite;
+  /* Fx 5+ */
+  -o-animation: METER 1s infinite;
+  /* Opera 12+ */
+  animation: METER 1s infinite;
+  /* IE 10+, Fx 29+ */
+  transform-origin: 73% 57%; }
+  .meter .pointer .false {
+    -webkit-animation: FALSE 0.4s infinite;
+    /* Safari 4+ */
+    -moz-animation: FALSE 0.4s infinite;
+    /* Fx 5+ */
+    -o-animation: FALSE 0.4s infinite;
+    /* Opera 12+ */
+    animation: FALSE 0.4s infinite;
+    /* IE 10+, Fx 29+ */
+    transform-origin: 73% 57%; }
 
 .logo {
   width: 140px;

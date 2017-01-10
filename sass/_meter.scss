@@ -1,0 +1,150 @@
+@-webkit-keyframes METER {
+  17%   {
+    transform: rotate(45deg);
+  }
+  34%   {
+    transform: rotate(90deg);
+  }
+  51%   {
+    transform: rotate(135deg);
+  }
+  68%   {
+    transform: rotate(90deg);
+  }
+  85%   {
+    transform: rotate(45deg);
+  }
+  100%   {
+    transform: rotate(0deg);
+  }
+}
+
+@-moz-keyframes METER {
+  17%   {
+    transform: rotate(45deg);
+  }
+  34%   {
+    transform: rotate(90deg);
+  }
+  51%   {
+    transform: rotate(135deg);
+  }
+  68%   {
+    transform: rotate(90deg);
+  }
+  85%   {
+    transform: rotate(45deg);
+  }
+  100%   {
+    transform: rotate(0deg);
+  }
+}
+
+@-o-keyframes METER {
+  17%   {
+    transform: rotate(45deg);
+  }
+  34%   {
+    transform: rotate(90deg);
+  }
+  51%   {
+    transform: rotate(135deg);
+  }
+  68%   {
+    transform: rotate(90deg);
+  }
+  85%   {
+    transform: rotate(45deg);
+  }
+  100%   {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes METER {
+  17%   {
+    transform: rotate(45deg);
+  }
+  34%   {
+    transform: rotate(90deg);
+  }
+  51%   {
+    transform: rotate(135deg);
+  }
+  68%   {
+    transform: rotate(90deg);
+  }
+  85%   {
+    transform: rotate(45deg);
+  }
+  100%   {
+    transform: rotate(0deg);
+  }
+}
+
+@-webkit-keyframes FALSE {
+  0%   {
+    transform: rotate(-25deg);
+  }
+  100%   {
+    transform: rotate(25deg);
+  }
+}
+
+@-moz-keyframes FALSE {
+  0%   {
+    transform: rotate(-25deg);
+  }
+  100%   {
+    transform: rotate(25deg);
+  }
+}
+
+@-o-keyframes FALSE {
+  0%   {
+    transform: rotate(-25deg);
+  }
+  100%   {
+    transform: rotate(25deg);
+  }
+}
+
+@keyframes FALSE {
+  0%   {
+    transform: rotate(-25deg);
+  }
+  100%   {
+    transform: rotate(25deg);
+  }
+}
+
+.meter
+{
+  .pointer{
+    -webkit-animation: METER 1s infinite; /* Safari 4+ */
+    -moz-animation:    METER 1s infinite; /* Fx 5+ */
+    -o-animation:      METER 1s infinite; /* Opera 12+ */
+    animation:         METER 1s infinite; /* IE 10+, Fx 29+ */
+    //transform-origin: 73% 70%;
+    transform-origin: 73% 57%;
+    
+    .false{
+      -webkit-animation: FALSE 0.4s infinite; /* Safari 4+ */
+      -moz-animation:    FALSE 0.4s infinite; /* Fx 5+ */
+      -o-animation:      FALSE 0.4s infinite; /* Opera 12+ */
+      animation:         FALSE 0.4s infinite; /* IE 10+, Fx 29+ */
+      //transform-origin: 73% 70%;
+      transform-origin: 73% 57%;
+    }
+    .partly-true{
+
+    }
+
+    .plausible{
+
+    }
+    .true{
+
+    }
+  }
+}

@@ -64,6 +64,30 @@
       }
     }
   }
+
+  .charts{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background: linear-gradient(
+      to bottom,
+      $primarycol 0%,
+      $primarycol 50%,
+      #fff 50%,
+      #fff 100%
+      );
+
+    .title{
+      text-transform: uppercase;
+      font-size: $heading;
+      color: #fff;
+      padding: 32px;
+    }
+
+    iframe{
+      min-height: 380px;
+    }
+  }
   .image-headline{
     display: block;
     position: relative;

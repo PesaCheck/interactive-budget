@@ -106,7 +106,6 @@ pesacheck.controller("createStoryCtrl", [
   }
 ]);
 
-
 pesacheck.controller("previewStoryCtrl", [
   "$uibModalInstance","id",
   function($uibModalInstance, id){
@@ -125,7 +124,6 @@ pesacheck.controller("previewStoryCtrl", [
   }
 ]);
 
-
 pesacheck.controller("editStoryCtrl", [
   "$stateParams", "$Story",
   function($stateParams, $Story){
@@ -141,9 +139,25 @@ pesacheck.controller("editStoryCtrl", [
             alert("Story updated successfully")
           }
         )
+      },
+      addFinding: function(data){
+        if(typeof(data) == 'object'){
+          self.data.findings.push(data);
+        }
+      },
+      addExplanation: function(data){
+        if(typeof(data) == 'object'){
+          self.data.explanations.push(data);
+        }
       }
     });
 
-    console.log(self.data)
+    if(self.data.explanations == undefined){
+      self.data.explanations = [];
+    }
+
+    if(self.data.findings == undefined){
+      self.data.findings = [];
+    }
   }
 ])

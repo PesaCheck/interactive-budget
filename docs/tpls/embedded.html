@@ -1,6 +1,5 @@
 <div class="timeline" pesacheck-timeline story="{{Embedded.id}}">
   <section class="content" ng-include="layout">
-
   </section>
   <section class="loader" pesacheck-slide-loader timeout="{{timeout}}" slide="{{position}}">
     <div class="loading" ng-style="{width: loadingScale}"></div>
@@ -15,7 +14,7 @@
       <img src="./images/pesacheck-meter-partly-true.svg" ng-switch-when="1" alt="Pesacheck truth meter" class="truthmeter animated zoomIn">
       <img src="./images/pesacheck-meter-plausible.svg" ng-switch-when="2" alt="Pesacheck truth meter" class="truthmeter animated zoomIn">
       <img src="./images/pesacheck-meter-true.svg" ng-switch-when="3" alt="Pesacheck truth meter" class="truthmeter animated zoomIn">
-      <img src="./images/pesacheck-meter-blank.svg" ng-switch-default alt="Pesacheck truth meter" class="truthmeter animated zoomIn">
+      <pesacheck-meter ng-switch-default class="truthmeter animated zoomIn"></pesacheck-meter>
     <span>
     <div class="readings">
       <ul class="meter-readings">
@@ -60,9 +59,27 @@
   </div>
 </script>
 
+<script type="text/ng-template" id="charts-layout.html">
+  <div class="slide charts story">
+    <p class="title">{{data.title}}</p>
+    <div class="row">
+      <iframe seamless frameborder="0" scrolling="no" src="{{data.chartUri}}" class="col-sm-10"></iframe>
+    </div>
+  </div>
+</script>
+
 <script type="text/ng-template" id="loading-layout.html">
   <div class="row">
     <img src="./images/logo.png">
   </div>
   <span>loading</span>
+</script>
+
+<script type="text/ng-template" id="tweet-layout.html">
+  <div class="row slide numbers story">
+    <p class="title">{{data.title}}</p>
+    <twitter-widget twitter-widget-id="data.tweet"
+        twitter-widget-options="{'cards': 'hidden', 'align': 'center'}">
+    </twitter-widget>
+  </div>
 </script>

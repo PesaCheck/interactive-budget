@@ -31,10 +31,12 @@ var deps = {
   css: [
     PATHS.node + "bootstrap/dist/css/bootstrap.css",
     PATHS.node + "bootstrap/dist/css/bootstrap.css.map",
-    PATHS.node + "animate.css/animate.css"
+    PATHS.node + "animate.css/animate.css",
+    PATHS.node + "font-awesome/css/**"
   ],
   fonts: [
-    PATHS.node + "boostrap/dist/fonts/**"
+    PATHS.node + "boostrap/dist/fonts/**",
+    PATHS.node + "font-awesome/fonts/**"
   ]
 }
 

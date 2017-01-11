@@ -44,7 +44,7 @@ pesacheck.directive("pesacheckTimeline", [
 
 
                 changeContext();
-                changeSlide();
+                // changeSlide();
               },
               function(error) {
                 console.error("Error:", error);
@@ -123,8 +123,8 @@ pesacheck.directive("pesacheckTimeline", [
         ];
 
 
-        var count = 0;
-
+        scope.count = 0;
+        scope.slides = slides;
         function translateVerdict(verdict){
           if(verdict == 'false'){
             return 0;
@@ -138,21 +138,31 @@ pesacheck.directive("pesacheckTimeline", [
         }
 
         function changeContext () {
-          scope.layout= slides[count].layout + "-layout.html";
-          scope.data = slides[count].data;
-          scope.tag = slides[count].tag;
-          scope.timeout = slides[count].timeout;
-          scope.position = slides[count].position;
-          count++;
+          scope.layout= slides[scope.count].layout + "-layout.html";
+          scope.data = slides[scope.count].data;
+          scope.tag = slides[scope.count].tag;
+          scope.timeout = slides[scope.count].timeout;
+          scope.position = slides[scope.count].position;
+          // count++;
         }
 
         function changeSlide () {
           $timeout(function () {
              changeContext();
-             if (count < slides.length) {
+             if (scope.count < slides.length) {
                 changeSlide();
              }
-          }, slides[count].timeout * 1000);
+          }, slides[scope.count].timeout * 1000);
+        }
+
+        scope.nextSlide = function(){
+          scope.count++;
+          changeContext();
+        }
+
+        scope.previousSlide = function(){
+          scope.count--;
+          changeContext();
         }
 
         $animate.on('enter', element,

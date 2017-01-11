@@ -1,9 +1,22 @@
-<div class="timeline" pesacheck-timeline story="{{Embedded.id}}">
-  <section class="content" ng-include="layout">
-  </section>
-  <section class="loader" pesacheck-slide-loader timeout="{{timeout}}" slide="{{position}}">
-    <div class="loading" ng-style="{width: loadingScale}"></div>
-  </section>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+      <div class="timeline row" pesacheck-timeline story="{{Embedded.id}}">
+        <section class="content col-sm-12" ng-include="layout">
+        </section>
+
+        <!-- <section class="loader" pesacheck-slide-loader timeout="{{timeout}}" slide="{{position}}">
+          <div class="loading" ng-style="{width: loadingScale}"></div>
+        </section> -->
+      </div>
+      <section class="controls row">
+        <div class="col-sm-6 pull-right">
+          <button class="btn pull-right" ng-click="nextSlide()" ng-show="count < (slides.length-1)">Next</btn>
+          <button class="btn pull-right" ng-click="previousSlide()" ng-show="count > 0">Previous</btn>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>
 
 <script type="text/ng-template" id="pesacheck-meter-layout.html">

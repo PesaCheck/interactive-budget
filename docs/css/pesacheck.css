@@ -121,15 +121,38 @@
     height: 600px;
     border: none; }
 
-.timeline {
+.loading-article {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  height: 600px;
-  width: 800px; }
+  justify-content: center;
+  align-content: center;
+  margin-top: 128px; }
+  .loading-article img {
+    width: 360px;
+    height: 65px; }
+  .loading-article i {
+    font-size: 48px;
+    margin-top: 16px;
+    color: #2a74aa; }
+
+.controls {
+  background: #2a74aa;
+  padding: 16px; }
+  .controls .btn {
+    border: 1px solid #ffffff;
+    border-radius: 0px;
+    color: #ffffff;
+    background: none;
+    margin-left: 16px; }
+  .controls .btn:hover {
+    background: #ffffff;
+    color: #2a74aa; }
+
+.timeline {
+  background: #ffffff; }
   .timeline .content {
-    display: flex;
-    flex: 1; }
+    min-height: 500px;
+    padding: 0px; }
   .timeline .loader {
     height: 15px;
     background: #f8ca0f; }
@@ -139,14 +162,8 @@
       height: 15px;
       position: relative;
       background: #4cae4e; }
-  .timeline .slide {
-    display: flex;
-    flex-direction: column;
-    flex: 1; }
   .timeline .numbers {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    min-height: 500px;
     background: linear-gradient(to bottom, #2a74aa 0%, #2a74aa 50%, #fff 50%, #fff 100%); }
     .timeline .numbers .title {
       text-transform: uppercase;
@@ -154,16 +171,9 @@
       color: #fff;
       padding: 32px; }
     .timeline .numbers .numbers-row {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
       padding: 32px; }
-      .timeline .numbers .numbers-row .box {
-        width: 40%; }
   .timeline .charts {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    min-height: 500px;
     background: linear-gradient(to bottom, #2a74aa 0%, #2a74aa 50%, #fff 50%, #fff 100%); }
     .timeline .charts .title {
       text-transform: uppercase;
@@ -171,10 +181,12 @@
       color: #fff;
       padding: 32px; }
     .timeline .charts iframe {
-      min-height: 380px; }
+      min-height: 300px;
+      padding-left: 48px; }
   .timeline .image-headline {
     display: block;
-    position: relative; }
+    position: relative;
+    min-height: 500px; }
     .timeline .image-headline h2 {
       display: inline-block;
       margin: 0px 24px;
@@ -192,6 +204,7 @@
     flex: 1;
     flex-direction: column;
     align-items: center;
+    min-height: 500px;
     background: #2a74aa; }
     .timeline .slide.pesacheck-meter .meter {
       display: inline-block; }
@@ -206,26 +219,6 @@
       padding: 8px 16px; }
     .timeline .slide.pesacheck-meter .readings {
       margin-top: 32px; }
-
-@keyframes infinite-on {
-  from {
-    opacity: 0; }
-  to {
-    opacity: 1; } }
-
-@keyframes infinite-off {
-  from {
-    opacity: 1; }
-  to {
-    opacity: 0; } }
-    .timeline .slide.pesacheck-meter .pointer-false {
-      animation: infinite-on 0.1s 0s, infinite-off 0.1s 0.1s, infinite-on 0.1s 0.6s infinite, infinite-off 0.1s 1s infinite; }
-    .timeline .slide.pesacheck-meter .pointer-partly-true {
-      animation: infinite-on 0.1s 0.2s, infinite-off 0.1s 0.3s, infinite-on 0.1s 1s infinite, infinite-off 0.1s 1.1s infinite; }
-    .timeline .slide.pesacheck-meter .pointer-plausible {
-      animation: infinite-on 0.1s 0.3s, infinite-off 0.1s 0.4s, infinite-on 0.1s 1.1s infinite, infinite-off 0.1s 1.2s infinite; }
-    .timeline .slide.pesacheck-meter .pointer-true {
-      animation: infinite-on 0.1s 0.4s, infinite-off 0.1s 0.5s, infinite-on 0.1s 1.2s infinite, infinite-off 0.1s 1.3s infinite; }
 
 .meter-readings {
   display: flex;

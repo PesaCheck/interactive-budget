@@ -121,6 +121,12 @@
     height: 600px;
     border: none; }
 
+.loading-article {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+
 .controls {
   background: #2a74aa;
   padding: 16px; }

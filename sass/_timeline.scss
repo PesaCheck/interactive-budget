@@ -1,5 +1,12 @@
 @import 'variables';
 
+.loading-article{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .controls{
   background: $primarycol;
   padding: 16px;

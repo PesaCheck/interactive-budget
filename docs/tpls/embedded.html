@@ -62,12 +62,12 @@
 <script type="text/ng-template" id="numbers-layout.html">
   <div class="slide numbers story">
     <p class="title">{{data.title}}</p>
-    <div class="numbers-row">
-      <div class="box" ng-repeat="stat in data.stats">
+    <div class="row">
+      <div class="box col-sm-5 col-sm-offset-1" ng-repeat="stat in data.stats">
         <h3>{{stat.heading}}</h3>
         <p>{{stat.description}}</p>
         <span class="counter">{{stat.figure}}</span>
-        <p>{{stat.figureMeta}}</p>
+        <p style="text-transform: uppercase;">{{stat.meta}}</p>
       </div>
     </div>
   </div>

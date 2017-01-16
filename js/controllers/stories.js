@@ -134,8 +134,6 @@ pesacheck.controller("editStoryCtrl", [
       update: function(){
         self.data.$save().then(
           function(ref){
-            console.log(ref.key === self.data.$id);
-            console.log(self.data)
             alert("Story updated successfully")
           }
         )
@@ -143,21 +141,30 @@ pesacheck.controller("editStoryCtrl", [
       addFinding: function(data){
         if(typeof(data) == 'object'){
           self.data.findings.push(data);
+          self.finding = {};
         }
       },
       addExplanation: function(data){
         if(typeof(data) == 'object'){
           self.data.explanations.push(data);
+          self.stat = {};
         }
       }
     });
 
-    if(self.data.explanations == undefined){
-      self.data.explanations = [];
-    }
+    self.data.$loaded(
+      function(data) {
+        if(self.data.explanations == undefined){
+          self.data['explanations'] = [];
+        }
 
-    if(self.data.findings == undefined){
-      self.data.findings = [];
-    }
+        if(self.data.findings == undefined){
+          self.data['findings'] = [];
+        }
+        console.log(self.data)
+      }
+
+
+    );
   }
 ])
